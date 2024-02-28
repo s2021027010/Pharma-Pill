@@ -1,0 +1,137 @@
+#invoice-POS {
+    border: 1px solid #ddd;
+    padding: 1mm;
+    margin: 1% 1% ;
+    width: 70mm;
+    background: #fff;
+  }
+.table-wrapX {
+    overflow-x: auto; 
+    columns: 70mm;
+    height: 100%;
+}
+
+.brek{
+    border: #000;
+  }
+  #invoice-POS ::selection {
+    background: #f31544;
+    color: #FFF;
+  }
+  #invoice-POS ::moz-selection {
+    background: #f31544;
+    color: #FFF;
+  }
+  #invoice-POS h1 {
+  font-family: 'Fira Code', monospace;
+    font-size: 2em;
+    color: #222;
+  }
+  #invoice-POS h2 {
+    font-size: 14px;
+  font-family: 'Fira Code', monospace;
+    margin:0 0 5px 0;
+  }
+  #invoice-POS h3 {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 14px;
+  font-family: 'Fira Code', monospace;
+  }
+  #invoice-POS p {
+    font-size: 12px; 
+    line-height:8px;
+    font-family: 'Fira Code', monospace;
+    padding:0px;
+    margin:5px 0;
+  } 
+  
+  #invoice-POS .info {
+    display: block;
+    margin-left: 0;
+  }
+  table{
+      border-collapse: collapse; /* Optional: Removes cell spacing */
+      padding: 10px;
+  }
+  td {
+   font-size:12px;
+    background-color:#fff;
+  font-family: 'Fira Code', monospace;
+  }
+  th {
+  font-family: 'Fira Code', monospace;
+   font-size:12px;
+    background-color:#fff;
+   text-align: left;
+  }
+  #invoice-POS .title {
+    float: right;
+  font-family: 'Fira Code', monospace;
+  }
+  #invoice-POS .title p {
+    text-align: right;
+    font-family: 'Fira Code', monospace;
+  }
+  #invoice-POS table {
+    width: 100%;
+    border-collapse: collapse;
+    border-top:1px dotted #000 ;
+  }
+  #invoice-POS .tabletitle {
+    font-size: 1em;
+    background: #fff;
+    font-family: 'Fira Code', monospace;
+  }
+  #invoice-POS .service {
+    border-bottom: 1px solid #EEE;
+    
+  }
+  #invoice-POS .item {
+    width: 36mm;
+  }
+  #invoice-POS .itemtext {
+    font-size: 1em;
+  }
+
+  .info_top {
+    text-align: center; 
+    justify-content: center; 
+    align-items:center;
+}
+
+   
+@media  screen and (max-width: 700px) {
+    
+  .col-4 {
+        float: left;
+        width: 100%;
+        padding: 1.5px;  
+      }
+       
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+}
+  #invoice-POS .legalcopy {
+    margin: 10mm auto;
+  }
+  #invoice-POS .legalcopy p {
+    margin: 2px;
+      display:flex;
+    justify-content:center;
+    
+  }
+
+  #invoice-POS .fassainumber{
+     display:flex;
+    justify-content:center;
+  }
+  
+  
+  #invoice-POS .total-section{
+    display:flex;
+    justify-content:space-between;
+  } 

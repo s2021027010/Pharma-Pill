@@ -1,0 +1,387 @@
+ 
+
+#myInput { 
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 14px;
+  padding: 8px 16px 8px 32px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  overflow-x: scroll;
+}
+.text-blue {
+  color: rgba(85, 85, 219, 0.839);
+  font-size: medium;
+  font-weight: 400;
+
+}
+.text-red {
+  color: red;
+  font-size: medium;
+  font-weight: 400;
+} 
+.blink-soft {
+  animation: blinker 1.5s linear infinite;
+}
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 10px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+.Whspace {
+  color: rgb(144, 185, 209);
+}
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+} 
+
+table.wrapper {
+  overflow-x: scroll;
+}
+
+div.wrapperY {
+  overflow-y: scroll;
+}
+.tableborder {
+  width: 10%; 
+  border-right: solid #d8d6d6 0.1rem;
+}
+.selby {
+  padding-top: 0.8rem; 
+  padding-bottom: 0.8rem;
+}
+.lblby {
+  font-size: medium;
+}
+
+.imgTable {
+  width: 50px; 
+  height: 50px;
+}
+.texthold {
+  box-sizing: border-box;
+  border: 1px thin transparent transparent;
+  outline: none;
+  font-size: medium;
+  background-color: transparent transparent;
+  width: 110px;
+  height: 37px;
+  min-height: 37px;
+  min-width: 110px;
+  max-height: 200px;
+  max-width: 510px;
+}
+textarea {
+  overflow: auto;
+  resize: vertical;
+}
+@media  screen and (max-width: 700px) {
+  
+  #myInput { 
+    background-position: 6px 6px;
+    background-repeat: no-repeat;
+    width: 80%;
+    font-size: 10px;
+    padding: 6px 12px 6px 12px;
+    border: 1px solid #ddd;
+    margin-bottom: 6px;
+  }
+  #myTable {
+    overflow-x: scroll;
+    border-collapse: collapse;
+    width: 100%;
+    border: 0.5px solid #ddd;
+    font-size: 10px;
+  }
+  
+.texthold {
+  box-sizing: border-box;
+  border: 1px thin transparent transparent;
+  outline: none;
+  font-weight: 50;
+  font-size: 8px;
+  background-color: transparent transparent;
+  width: 110px;
+  height: 37px;
+  min-height: 37px;
+  min-width: 110px;
+  max-height: 200px;
+  max-width: 510px;
+}
+  #myTable th, #myTable td {
+  width: 100%;
+  font-size: 8px;
+  padding: 2px;
+  }
+.imgTable {
+  width: 40px; 
+  height: 40px;
+}
+.selby {
+  background-position: 6px 6px;
+  background-repeat: no-repeat;
+  width: 80%;
+  font-size: 8px;
+  padding: 6px 12px 6px 12px;
+  border: 1px solid #ddd;
+  margin-bottom: 6px;
+}
+.lblby {
+  font-size: 6px;
+} 
+}
+
+.center {
+  margin: auto;
+  width: 60%;
+  padding: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.hideform {
+  display: none;
+}
+
+.addfade { 
+  position: fixed;
+  top: 1rem;
+  left: 30rem; 
+  background-color: white;
+  width: 50%;
+  height: 80%; 
+}
+.boxed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  background-color: rgba(70, 71, 71, 0.864);;
+  width: 100%;
+  height: 100%; 
+}
+.btnNewAdd {
+  position: relative; 
+  text-align: end;
+}
+.btnAddNew {
+  padding: 0.6rem 0.6rem 0.6rem 0.6rem;
+  font-size: small;
+  background-color: #1f2e88;
+  color: white;
+  inline-size: max-content;
+  margin: 3px;
+  border-radius: 0.5rem;
+  &:hover {
+    background-color: #2f66d4;
+  }
+}
+.txtboxAdd {
+  padding: 1rem 1rem;
+  border: #d8d6d6 solid 0.2rem;
+}
+
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+input[type=password] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+input[type=email] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+@media  screen and (max-width: 700px) {
+.btnAddNew {
+  padding: 0.5vh 0.5vh 0.5vh 0.5vh;
+  font-size: smaller;
+  background-color: #1f2e88;
+  color: white; 
+  margin-bottom: 0.3rem;
+  inline-size: max-content;
+  margin: 2px 2px;
+  border-radius: 0.5rem;
+  border: none;
+  
+}
+
+.addfade { 
+  position: relative;
+  font-size: small;
+  top: 1rem;
+  left: 2rem;  
+  background-color: white;
+  width: 90%;
+  height: 80%; 
+}
+}
+
+/*  *****************************        ****   fade box Add new medicine  ****      *******************************  */
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+input[type=password] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+input[type=email] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+input[type=date], select, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+input[type=file], select, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+input[type=number], select, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+ 
+
+.container {
+  border-radius: 3px;
+  background-color: #f2f2f2;
+  padding: 10px; 
+}
+
+
+.col-25 {
+  float: left;
+  font-size: medium;
+  width: 20%;
+  margin-top: 3px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 3px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.titleBox { 
+  padding: 0.1rem 0.1rem;
+  color: #1f2e88;
+  text-align: center;
+  font-size: medium;
+}
+
+.iconMaskdelete {
+  color: rgba(230, 6, 6);
+  &:hover {
+    color: rgba(230, 6, 6, 0.677);
+  }
+}
+
+.iconMaskupdate {
+  color: rgb(33, 31, 150);
+  &:hover {
+    color: rgb(33, 31, 150, 0.677);
+  }
+}
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 650px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+    font-size: small;
+  }
+  
+  .iconMaskdelete {
+    font-size: x-small; 
+  }
+    
+  .iconMaskupdate {
+    font-size: x-small; 
+  }
+.col-25 {
+  float: left;
+  font-size: small;
+  width: 35%;
+  margin-top: 2px;
+}
+
+.col-75 {
+  float: left;
+  width: 60%;
+  margin-top: 2px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+}

@@ -1,0 +1,280 @@
+ 
+.widget-26 {
+  color: #3c4142; 
+  font-weight: 400;  
+  margin-top: 10px;
+}
+
+.widget-26 tr:first-child td {
+  border: 0; 
+  margin: 5px;
+  margin-top: 10px;
+}
+
+.widget-26 .widget-26-job-emp-img img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%; 
+}
+
+.widget-26 .widget-26-job-title {
+  min-width: 180px;
+  margin-top: 10px;
+}
+
+.widget-26 .widget-26-job-title a {
+  font-size: medium;
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #3c4142;
+  line-height: 1.5;
+}
+
+    
+.widget-26 .widget-26-job-title p a {
+    font-size: medium;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #3c4142;
+    line-height: 1.5;
+}
+    
+.employer-name {
+    font-size: medium;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #3c4142;
+    line-height: 1.5;
+}
+ 
+ 
+.widget-26 .widget-26-job-info {
+    margin-left: 40px;
+    min-width: 100px; 
+  }
+  
+  .widget-26 .widget-26-job-info p {
+    line-height: 1.5;
+    color: #3c4142;
+    font-size: 0.8125rem;
+    
+    font-weight: 500;
+    font-size: small;
+  }
+  
+  
+ 
+
+.card-margin {
+    margin-bottom: 0.100rem;
+}
+.card {
+    border: 0;
+    box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+    -ms-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+}
+.card {
+    font-size: small;
+    position: relative;
+    display: grid;
+    flex-direction: column;
+    width: 550px;
+    height: 70px;
+    min-width: 550px;
+    min-height: 70px;
+    max-width: 550px;
+    max-height: 70px;
+    word-wrap: break-word;
+    background-color: #ffffff;
+    background-clip: border-box;
+    border: 1px solid #e6e4e9;
+    border-radius: 8px;
+}
+ div.box-containt {
+  display: block;
+  grid-template-columns: repeat(auto-fit, minmax(20rem,1fr));
+  gap: 1rem;
+}
+ 
+ 
+ 
+@media  screen and (max-width: 700px) {
+  .widget-26 {
+    color: #3c4142; 
+    font-weight: 400; 
+    margin-top: 10px;
+  }
+    .card-margin {
+        margin-bottom: 0.01rem;
+    }
+    
+ div.box-containt {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem,1fr));
+  gap: 1rem;
+}
+.widget-26 .widget-26-job-title a {
+    margin-top: 25px;
+    font-size: small;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #3c4142;
+  line-height: 1.5;
+}
+  
+.employer-name {
+    font-size: small;
+    font-weight: 300;
+    font-size: 0.7rem;
+    color: #3c4142;
+    line-height: 1.5;
+}
+    
+.widget-26 .widget-26-job-title p a {
+    font-size: small;
+  font-weight: 300;
+  font-size: 0.6rem;
+  color: #3c4142;
+  line-height: 1.5;
+}
+
+.widget-26 .widget-26-job-title {
+  min-width: 140px;  
+}
+.widget-26 .widget-26-job-info {
+    margin-left: 0; 
+  }
+  
+  .widget-26 .widget-26-job-info p {
+    line-height: 1.5;
+    color: #3c4142;
+    font-size: 0.8125rem;
+  }
+  
+ 
+    .card {
+        border: 0;
+        box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+        -webkit-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+        -moz-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+        -ms-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+    }
+    .card {
+         
+        font-size: smaller;
+        position: relative; 
+        width: 365px;
+        height: 60px; 
+        min-width: 365px;
+        min-height: 60px; 
+        max-width: 365px;
+        max-height: 60px;
+        border: 1px solid #e6e4e9;
+        border-radius: 8px;
+    }
+}
+
+
+/* responsive 
+      -webkit-appearance: none;
+      -moz-appearance: none; */
+
+ 
+  @supports (-webkit-appearance: none) or (-moz-appearance: none) {
+    .checkbox-wrapper-13 input[type=checkbox] {
+      --active: #275EFE;
+      --active-inner: #fff;
+      --focus: 2px rgba(39, 94, 254, .3);
+      --border: #BBC1E1;
+      --border-hover: #275EFE;
+      --background: #fff;
+      --disabled: #F6F8FF;
+      --disabled-inner: #E1E6F9; 
+      height: 21px;
+      outline: none;
+      display: inline-block;
+      vertical-align: top;
+      position: relative;
+      margin: 0;
+      cursor: pointer;
+      border: 1px solid var(--bc, var(--border));
+      background: var(--b, var(--background));
+      transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
+    }
+    .checkbox-wrapper-13 input[type=checkbox]:after {
+      content: "";
+      display: block;
+      left: 0;
+      top: 0;
+      position: absolute;
+      transition: transform var(--d-t, 0.3s) var(--d-t-e, ease), opacity var(--d-o, 0.2s);
+    }
+    .checkbox-wrapper-13 input[type=checkbox]:checked {
+      --b: var(--active);
+      --bc: var(--active);
+      --d-o: .3s;
+      --d-t: .6s;
+      --d-t-e: cubic-bezier(.2, .85, .32, 1.2);
+    }
+    .checkbox-wrapper-13 input[type=checkbox]:disabled {
+      --b: var(--disabled);
+      cursor: not-allowed;
+      opacity: 0.9;
+    }
+    .checkbox-wrapper-13 input[type=checkbox]:disabled:checked {
+      --b: var(--disabled-inner);
+      --bc: var(--border);
+    }
+    .checkbox-wrapper-13 input[type=checkbox]:disabled + label {
+      cursor: not-allowed;
+    }
+    .checkbox-wrapper-13 input[type=checkbox]:hover:not(:checked):not(:disabled) {
+      --bc: var(--border-hover);
+    }
+    .checkbox-wrapper-13 input[type=checkbox]:focus {
+      box-shadow: 0 0 0 var(--focus);
+    }
+    .checkbox-wrapper-13 input[type=checkbox]:not(.switch) {
+      width: 21px;
+    }
+    .checkbox-wrapper-13 input[type=checkbox]:not(.switch):after {
+      opacity: var(--o, 0);
+    }
+    .checkbox-wrapper-13 input[type=checkbox]:not(.switch):checked {
+      --o: 1;
+    }
+    .checkbox-wrapper-13 input[type=checkbox] + label {
+      display: inline-block;
+      vertical-align: middle;
+      cursor: pointer;
+      margin-left: 4px;
+    }
+
+    .checkbox-wrapper-13 input[type=checkbox]:not(.switch) {
+      border-radius: 7px;
+    }
+    .checkbox-wrapper-13 input[type=checkbox]:not(.switch):after {
+      width: 5px;
+      height: 9px;
+      border: 2px solid var(--active-inner);
+      border-top: 0;
+      border-left: 0;
+      left: 7px;
+      top: 4px;
+      transform: rotate(var(--r, 20deg));
+    }
+    .checkbox-wrapper-13 input[type=checkbox]:not(.switch):checked {
+      --r: 43deg;
+    }
+  }
+
+  .checkbox-wrapper-13 * {
+    box-sizing: inherit;
+  }
+  .checkbox-wrapper-13 *:before,
+  .checkbox-wrapper-13 *:after {
+    box-sizing: inherit;
+  } 
+  

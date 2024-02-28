@@ -1,0 +1,53 @@
+/*   *********************  *****************  Admin     ************************  */
+.hovr:hover {
+  background-color: rgb(211, 208, 208)
+}
+
+div.menu {
+margin: 0 0;
+gap: 0 ;
+}
+div.menu li.staff {
+font: small;
+font-size: small;
+font-weight: lighter;
+padding: 10px 10px 10px 10px;
+margin: 0 0;
+gap: 0; 
+align-items: center;
+text-align: center;
+justify-content: center;
+}
+
+div.menu li.user {
+font: small;
+font-size: small;
+font-weight: lighter;
+padding: 10px 10px 10px 10px;
+margin: 0 0;
+gap: 0; 
+align-items: center;
+text-align: center;
+justify-content: center;
+}
+
+@media screen and (max-width: 700px) {
+
+ldiv.menu i.staff {
+  font: smaller;
+  font-size: smaller;
+  font-weight: lighter;
+  padding: 10px 10px 10px 10px;
+  margin: 0 0;
+  gap: 0;
+}
+
+div.menu li.user {
+  font: smaller;
+  font-size: smaller;
+  font-weight: lighter;
+  padding: 10px 10px 10px 10px;
+  margin: 0 0;
+  gap: 0;
+}
+}

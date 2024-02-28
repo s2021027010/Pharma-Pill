@@ -1,0 +1,27 @@
+       
+.block
+{
+  margin: 0 auto;
+  max-width: 900px;
+  padding: 0 0;   
+}
+.input-res
+{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font: 15px/1 'Open Sans', sans-serif;
+  color: #333;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  max-width: 500px;
+  background-color: #ddd;
+  border: none;
+  padding: 1px 1px 1px 1px;
+  border-radius: 3px;
+  box-shadow: none;
+  outline: none;
+  margin: 0;
+  box-sizing: border-box; 
+}

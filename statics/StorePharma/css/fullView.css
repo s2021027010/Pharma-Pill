@@ -1,0 +1,255 @@
+
+.poster-img2 { 
+  display: block; 
+  max-width: 60px;
+  max-height: 60px;
+}
+
+.card {
+  width: 50vw;
+  margin: 0 auto;
+  display: flex;
+  border-radius: 30px;
+  background-color: #fff;
+}
+
+.poster-img1 {
+  width: 250px;
+  height: 250px;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+
+.left-card,
+.right-card {
+  flex: 1;
+}
+
+.right-card {
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+/* .item-name,
+.main-title,
+.summary,
+.price,
+.btn {
+  flex: 1;
+} */
+
+.item-name {
+  font-family: "open sans";
+  font-weight: 150;
+  text-transform: uppercase;
+  font-size: 1.4em;
+  letter-spacing: 5px;
+  color: #6c7289;
+}
+
+.main-title {
+  font-family: "Fraunces";
+  font-weight: 700;
+  font-size: 2.5rem;
+  color: #1c232b;
+  margin: 0.5em 0;
+}
+
+.summary {
+  
+  padding: 0 0 0 0; 
+  margin: 0 0 0 0;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 400;
+  font-size: 1rem; 
+  color: #6c7289;
+  background-color: transparent;
+  border: transparent transparent;
+  border-color: transparent transparent;
+}
+
+.price {
+  display: inline-flex;
+  align-items: center;
+}
+.current-price {
+  font-family: "Fraunces";
+  font-weight: 700;
+  font-size: 3rem;
+  color: #3c8067;
+  margin: 0.5em 0.5em 0.5em 0;
+}
+.current-date {
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 300;
+  font-size: 1.4rem; 
+  margin: 0.1em 0.1em 0.1em 0;
+}
+
+.current-menufact {
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 300;
+  font-size: 1.4rem; 
+  margin: 0.1em 0.1em 0.1em 0;
+}
+.old-price {
+  font-family: "Montserrat";
+  font-weight: 500;
+  font-size: 1rem;
+  color: #6c7289;
+}
+
+.btnFv {
+  font-family: "Montserrat";
+  font-weight: 500;
+  font-size: 1rem;
+  width: 100%;
+  color: #fff;
+  background-color: #3c8067;
+  padding: 1em;
+  border-radius: 10px;
+  border:none;
+  transition: 0.5s;
+}
+.btnFv:hover {
+  background-color: #1e3d32;
+}
+
+
+.containerFv {
+  position: fixed;
+  border-radius: 1px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  top: 10rem; 
+  left: 30rem; 
+}
+
+/*         *************************    Responsive     *****************   */
+@media screen and (max-width: 650px) {
+
+
+  .poster-img2 {
+    display: block;
+    grid-column: auto;
+    max-width: 30px;
+    max-height: 30px;
+  }
+  
+  
+.containerFv {
+  position: fixed;
+  border-radius: 1px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  top: 10rem;  
+  left: 0;
+}
+.card {
+  
+  padding: 1px;
+    width: 95vw;
+    margin: 0 auto;
+    display: flex;
+    border-radius: 15px;
+    background-color: #fff;
+  }
+  
+  .poster-img1 {
+    width: 50%;
+    height: 50%;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+  }
+  
+  .left-card,
+  .right-card {
+    flex: 1;
+  }
+  
+  .right-card {
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: hidden;
+  }
+   
+  
+  .item-name {
+    font-family: "open sans";
+    font-weight: 150;
+    text-transform: uppercase;
+    font-size: 1.2em;
+    letter-spacing: 2.2px;
+    color: #6c7289;
+  }
+  
+  .main-title {
+    font-family: "Fraunces";
+    font-weight: 400;
+    font-size: 1.8rem;
+    color: #1c232b;
+    margin: 0.3em 0;
+  }
+
+  
+.current-date {
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 300;
+  font-size: 1rem; 
+  margin: 0.1em 0.1em 0.1em 0;
+}
+
+.current-menufact {
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 300;
+  font-size: 1rem; 
+  margin: 0.1em 0.1em 0.1em 0;
+}
+
+
+  
+  .summary {
+    padding: 0 0 0 0; 
+    margin: 0 0 0 0;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 200;
+    font-size: 1em; 
+    color: #6c7289; 
+  }
+  
+  .price {
+    display: inline-flex;
+    align-items: center;
+  }
+  .current-price {
+    font-family: "Fraunces"; 
+    font-weight: 140;
+    font-size: 2em;
+    color: #3c8067; 
+  }
+  
+  .old-price {
+    font-family: "Montserrat";
+    font-weight: 80;
+    font-size: 0.1em;
+    color: #6c7289;
+  }
+  
+  .btnFv {
+    font-family: "Montserrat";
+    font-weight: 500;
+    font-size: 1rem;
+    width: 100%;
+    color: #fff;
+    background-color: #3c8067;
+    padding: 1em;
+    border-radius: 10px;
+    border:none;
+    transition: 0.5s;
+  }
+}

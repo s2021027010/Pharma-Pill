@@ -1,0 +1,73 @@
+/* Google Fonts - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+ 
+.input-box {
+  position: relative;
+  height: 60px;
+  max-width: 500px;
+  width: 50%;
+  background: #fff;
+  margin: 0 5px;
+  border-radius: 8px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+}
+.input-box i,
+.input-box .button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.input-box i {
+  left: 20px;
+  font-size: 30px;
+  color: #707070;
+}
+.input-box input { 
+  position: absolute; 
+  height: 100%;
+  width: 100%;
+  outline: none;
+  font-size: 18px;
+  font-weight: 400;
+  border: none;
+  padding: 0 80px 0 30px;
+  background-color: transparent;
+}
+.input-box .button {
+  right: 5px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #4177bd;
+  border: none;
+  background-color: white;
+  padding: 8px 20px;
+  border-radius: 6px; 
+  cursor: pointer;
+  &:hover {    
+  background-color: rgb(219, 217, 217);
+  }
+}
+.input-box .button:active {
+  transform: translateY(-50%) scale(0.98);
+}
+
+/* Responsive */
+@media screen and (max-width: 500px) {
+  .input-box {
+    height: 50px;
+    margin: 0 4px;
+  }
+  .input-box i {
+    left: 12px;
+    font-size: 14px;
+  }
+  .input-box input {
+    padding: 0 50px 0 5px;
+  }
+  .input-box .button {
+    right: 2px;
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+}
+
