@@ -139,8 +139,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 's2021027010@umt.edu.pk' # 'PharmaPill_Project.demo.django.login@gmail.com' 
-EMAIL_HOST_PASSWORD = 'Arshad@2020'
+EMAIL_HOST_USER = 'yourAdmin@email.com' # 'PharmaPill_Project.demo.django.login@gmail.com' 
+EMAIL_HOST_PASSWORD = 'your-password'
 
 VBcode = "https://vtg7634p-8000.inc1.devtunnels.ms/Auth"
 LOCAL_HOST_STRIPE_Auth = 'http://localhost:8000/Auth'
@@ -150,9 +150,9 @@ LOCAL_HOST_STRIPE_VBcode = VBcode + '/logIn'
 
 
 # ------------------ Stripe integration -------------------
-STRIPE_PUBLIC_KEY = "pk_test_51MDkyQDUzRcdw0ai84xqLsFylb0EVMCnP4Qv9y3NeW219gwQifI696lrqejOacOFEVO5bbIa3Zxd9bi5k7ON0sc200KlqO6jNm"
-STRIPE_SECRET_KEY = "sk_test_51MDkyQDUzRcdw0aicbwC0jW25KusolDM0SPjbQxAau6bNtF097hPBYrS296qBWJMG8TqQbNCivSB21jUx3vClUjd00bAoD7Dwn"
-STRIPE_WEBHOOK_SECRET = "whsec_16d956fc793dd97e959535078ee4924688e48ba300703d002cef4346b27e10a2"
+STRIPE_PUBLIC_KEY = "pk_test_*****yQDUzR*****i84xqLsFylb0EVMCn*****y3NeW219gwQifI69*****jOacOFE*****Ia3Zxd9bi5k7ON0sc200Klq*****"
+STRIPE_SECRET_KEY = "sk_test_*****yQDUzR*****icbwC0jW25KusolDM0SPjbQx*****NtF097hPBYrS296qBWJMG8TqQbNCivSB21jUx3vClUjd00bAo*****"
+STRIPE_WEBHOOK_SECRET = "whsec_*****6fc793dd97e959535078*****4688e48ba300703d002cef4346b27e1***"
 
 
 
