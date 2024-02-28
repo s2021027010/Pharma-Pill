@@ -1,0 +1,97 @@
+
+body { 
+  background-color: #acbfce;
+  background-image:  url("/static/AuthenticApp/hero-bg.jpg"); 
+}
+
+.backshow {
+    position: absolute; 
+    left: 57.5%; 
+    right: 40%; 
+    top: 20%; 
+    width: 400px; 
+    height: 300px; 
+    transform: rotate(53deg); 
+    transform-origin: 70%;  
+    border: transparent; 
+    border-radius: 50px; 
+    border-top-left-radius: 450px; 
+    border-top-right-radius: 1px; 
+    border-bottom-right-radius: 50px;
+    background: transparent;
+}
+.txtBox {
+  height: 60px; 
+  min-height: 30px;
+  padding-left: 0.5rem;
+  border-radius: 1rem rgb(237, 237, 237);
+  background-color: rgb(237, 237, 237); 
+  border-width: 0.1rem; 
+  border-bottom: 0.1rem  thick rgb(237, 237, 237);
+  border-top: 0.1rem thin rgb(237, 237, 237);
+}
+@media  screen and (max-width: 700px) {
+  .txtBox {
+    height: 100%; 
+  min-height: 30px; 
+  }
+}
+@media screen and (min-width: 300px) and  (max-width: 599px)  {
+    .backshow {
+    position: absolute; 
+    left: 53.5%; 
+    right: 25%; 
+    top: 2%;
+    width: 220px;   
+    height: 220px;  
+    }
+    .txtBox {
+      height: 100%; 
+    min-height: 30px; 
+    }
+  }
+
+  @media screen  and (min-width: 600px)  and (max-width:750px) {
+    .backshow {
+    position: absolute; 
+    left: 50.5%; 
+    right: 40%; 
+    top: 2%;
+    width: 260px;   
+    height: 260px;  
+    }
+    .txtBox {
+      height: 100%; 
+    min-height: 30px; 
+    }
+  }
+
+  @media screen  and (min-width: 755px)  and (max-width:900px) {
+    .backshow {
+    position: absolute; 
+    left: 53.5%; 
+    right: 50%; 
+    top: 6%;
+    width: 300px;   
+    height: 270px;  
+    }
+    .txtBox {
+      height: 100%; 
+    min-height: 30px; 
+    }
+  }
+
+  @media screen  and (min-width: 905px)  and (max-width:1100px) {
+    .backshow {
+    position: absolute; 
+    left: 53.5%; 
+    right: 50%; 
+    top: 6%;
+    width: 340px;   
+    height: 270px;  
+    }
+    .txtBox {
+      height: 100%; 
+    min-height: 30px; 
+    }
+  }

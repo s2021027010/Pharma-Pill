@@ -1,0 +1,20 @@
+body { 
+    background-color: #acbfce;
+    background-image:  url("/static/AuthenticApp/hero-bg.jpg"); 
+  }
+.txtBox {
+    height: 60px; 
+    min-height: 30px;
+    padding-left: 0.5rem;
+    border-radius: 1rem rgb(237, 237, 237);
+    background-color: rgb(237, 237, 237); 
+    border-width: 0.1rem; 
+    border-bottom: 0.1rem  thick rgb(237, 237, 237);
+    border-top: 0.1rem thin rgb(237, 237, 237);
+  }
+@media  screen and (max-width: 700px) {
+    .txtBox {
+      height: 100%; 
+    min-height: 30px; 
+    }
+  }
