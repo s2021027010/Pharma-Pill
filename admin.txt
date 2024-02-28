@@ -1,0 +1,52 @@
+username : s2021027010@umt.edu.pk
+email :s2021027010@umt.edu.pk
+password : umt@2020
+
+
+ngrok tun >> ngrok http 8000
+https://fontawesome.com/    <<<icons +font
+https://fonts.google.com/icons
+https://books.agiliq.com/projects/django-orm-cookbook/en/latest/order_by_two.html
+ https://codepen.io/MAHESHBYL/details/LYxpBRp
+https://www.html.am/html-codes/color/html-red-code.cfm
+https://www.bootdey.com/snippets/tagged/result
+
+// ------------------------------------------------------------------------------------------------- \\
+Login Page 
+SignUp Page
++++++++++++++++++++++++++++++ Database +++++++++++++++++++++++++++++++++++++++
+
+Medicine_ID
+Med_LabelName
+Med_CompanyName
+Med_FormulaName
+Med_Price
+Type  #{tablet, Syrup etc.}
+Med_UsedFor
+Med_Describtion
+Med_ProductionDate
+Med_ExpireDate 
+create_at
+
+====================================================================
+    ###  Customer / Admin  ###
+1>>Home Page 
+2>>Profile
+    << Report on profile
+3>>Medicine Page
+4>>Search Medicine (database store search text to show about next about its)
+5>> Notification / Page
+6>> Bill Point
+7>> Order Point
+
+
+    ###  Admin  ###
+1>>Index/Home Page
+2>>Pharmacy Management System Admin
+3>>Add / Delete / update / Search / show Medicine
+5>>Notification page/ Apply each
+6>>Stock In/Out
+7>>Status Page
+8>>Dashboard
+9>>Sell Point
+10>>Report Bill 
