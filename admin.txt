@@ -1,16 +1,7 @@
-username : s2021027010@umt.edu.pk
-email :s2021027010@umt.edu.pk
-password : umt@2020
-
-
-ngrok tun >> ngrok http 8000
-https://fontawesome.com/    <<<icons +font
-https://fonts.google.com/icons
-https://books.agiliq.com/projects/django-orm-cookbook/en/latest/order_by_two.html
- https://codepen.io/MAHESHBYL/details/LYxpBRp
-https://www.html.am/html-codes/color/html-red-code.cfm
-https://www.bootdey.com/snippets/tagged/result
-
+username : "your user-email"
+email :"your email"
+password : "your-password"
+ 
 // ------------------------------------------------------------------------------------------------- \\
 Login Page 
 SignUp Page
