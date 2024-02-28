@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--  login.html  22 Nov 2019 10:04:03 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharma Pill</title>
+    <meta name="keywords" content="HTML5 Template">
+    <meta name="description" content="Pharma Pill">
+    <meta name="author" content="p-themes"> 
+
+    <!-- Favicon   -->
+    {% load static %}  
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'AuthenticApp/icons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'AuthenticApp/icons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'AuthenticApp/icons/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'AuthenticApp/icons/site.html' %}">
+    <link rel="mask-icon" href="{% static 'AuthenticApp/icons/favicon.png' %}" color="#666666">
+    <link rel="shortcut icon" href="{% static 'AuthenticApp/icons/favicon.png' %}">
+    <meta name="msapplication-config" content="{% static 'AuthenticApp/icons/favicon.png' %}">
+    <!-- 
+    <link rel="manifest" href="{% static 'AuthenticApp/icons/site.html' %}">
+    <link rel="mask-icon" href="{% static 'AuthenticApp/icons/safari-pinned-tab.svg' %}" color="#666666">
+    <link rel="shortcut icon" href="{% static 'AuthenticApp/icons/favicon.ico' %}">
+    <meta name="msapplication-config" content="{% static 'AuthenticApp/icons/browserconfig.xml' %}">
+     -->
+    <link rel="font-awesome" href="{% static 'AuthenticApp/fonts/flaming/flaming-webfont.woff2' %}">
+    <link rel="font-awesome" href="{% static 'AuthenticApp/fonts/flaming/flaming-webfont.woff' %}">
+
+    <meta name="apple-mobile-web-app-title" content="Pin Store">
+    <meta name="application-name" content="Pin Store">
+    <meta name="msapplication-TileColor" content="#cc9966">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Plugins CSS File -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'AuthenticApp/css/login/bootstrap.min.css' %}">  
+    <link rel="stylesheet" href="{% static 'AuthenticApp/css/login/icons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'AuthenticApp/css/login/style.css' %}"> 
+    
+    <link rel="stylesheet" href="{% static 'AuthenticApp/css/login/mystyle.css' %}"> 
+    <link rel="stylesheet" href="{% static 'AuthenticApp/css/login/background.css' %}">  
+</head>
+
+<body class="bgImg">
+ 
+        <div  class="modal-dialog" >
+            <div class="modal-content">
+                <div class="modal-body">
+      
+                    <div class="form-box">
+                        <div class="form-tab">
+      
+                            <div class=" ">
+                                <img src="{% static 'AuthenticApp/logoX.png' %}" class="header-center"  alt="Pin Logo" width="150" height="40" />
+                            </div>
+                            <ul class="nav nav-pills nav-fill" role="tablist">
+                                <li class="nav-item ">
+                                    <a class="nav-link active" id="signin-tab" data-toggle="tab" href="#signin" role="tab" aria-controls="signin" aria-selected="true"> Sign In </a>
+                                </li> 
+                            </ul>
+                            {% block content %}
+                             
+                                <div class="tab-pane fade show active" id="signin" role="tabpanel" aria-labelledby="signin-tab">
+                                    <form action="{% url 'lgIn' %}"  method="post"  enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        {% if messages %}
+                                            <ul class="messages">
+                                                {% for message in messages %}
+                                                <li {% if message.tags %} style="color: rgb(230, 6, 6);" class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% endif %}
+                                        <div class="form-group">
+                                            <label for="login-email">Email address *</label>
+                                            <input type="email" class="form-control " id="login-email" name="login-email" required>
+                                        </div><!-- End .form-group --> 
+                                        <div class="form-group">
+                                            <label for="login-password">Password *</label>
+                                            <input type="password" class="form-control" id="login-password" name="login-password" required>
+                                        </div><!-- End .form-group -->
+
+                                        <div class="form-footer">
+                                            <button type="submit" class="btn btn-outline-primary-2">
+                                                <span>LOG IN</span>
+                                               <!-- <i class="icon-long-arrow-right"></i> -->
+                                               <i class="material-icons">login</i>
+                                            </button>
+
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="signin-remember">
+                                                <label class="custom-control-label" for="signin-remember">Remember Me</label>
+                                            </div><!-- End .custom-checkbox --> 
+
+                                            </div><!-- End .form-footer -->
+                                    </form>
+                                    <div class="form-choice">
+                                        <p class="text-center">  
+                                                <div class="row">
+                                                    <div class="col-sm-7">
+                                                        <a href="{% url 'register' %}" class="btn btn-login btn-g"> 
+                                                            <i class="material-icons">add</i>
+                                                            Create New Account? 
+                                                        </a>  
+                                                    </div>
+                                                    <div class="col-sm-5">
+                                                        <a   href="{% url 'forgotPass' %}"   class="forgot-link">Forgot Password?</a>
+                                                    </div>
+                                                </div>  
+                                                
+                                            </p>
+                                        <p class="text-center"> or sign in with</p>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <a href="#" class="btn btn-login btn-g"> 
+                                                    <i class="material-icons">gmail</i>
+                                                    Login With Google
+                                                </a>
+                                            </div><!-- End .col-6 -->
+                                            <div class="col-sm-6">
+                                                <a href="#" class="btn btn-login btn-f">
+                                                    <i class="material-icons">facebook</i>
+                                                    Login With Facebook
+                                                </a>
+                                            </div><!-- End .col-6 -->
+                                        </div><!-- End .row -->
+                                    </div><!-- End .form-choice -->
+                                </div><!-- .End .tab-pane --> 
+ 
+                            </div><!-- End .tab-content -->
+                            {% endblock %}
+                        </div><!-- End .form-tab -->
+                    </div><!-- End .form-box -->
+                </div><!-- End .modal-body -->
+            </div><!-- End .modal-content -->
+        </div><!-- End .modal-dialog -->
+    </div><!-- End .modal -->
+
+    <!-- Plugins JS File -->
+    {% load static %}
+    <script src="{% static 'AuthenticApp/js/login/jquery.min.js' %}"></script>
+    <script src="{% static 'AuthenticApp/js/login/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'AuthenticApp/js/login/jquery.hoverIntent.min.js' %}"></script>
+    <script src="{% static 'AuthenticApp/js/login/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'AuthenticApp/js/login/superfish.min.js' %}"></script>
+    <script src="{% static 'AuthenticApp/js/login/owl.carousel.min.js' %}"></script>
+    <!-- Main JS File -->
+    <script src="{% static 'AuthenticApp/js/login/main.js' %}"></script> 
+
+    <script>
+        $(document).ready(function(){
+           
+            $("#myModal").modal();
+            
+        });
+        $("#myModal").click(function(){
+            $("#myModal").modal();
+        });
+        </script>
+</body>
+
+
+<!--  login.html  22 Nov 2019 10:04:03 GMT -->
+</html>

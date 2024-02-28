@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--  register.html  22 Jan 2024 10:04:03 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharma Pill</title>
+    <meta name="keywords" content="HTML5 Template">
+    <meta name="description" content="Pharma Pill">
+    <meta name="author" content="p-themes"> 
+
+    <!-- Favicon   -->
+    {% load static %}  
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'AuthenticApp/icons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'AuthenticApp/icons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'AuthenticApp/icons/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'AuthenticApp/icons/site.html' %}">
+    <link rel="mask-icon" href="{% static 'AuthenticApp/icons/favicon.png' %}" color="#666666">
+    <link rel="shortcut icon" href="{% static 'AuthenticApp/icons/favicon.png' %}">
+    <meta name="msapplication-config" content="{% static 'AuthenticApp/icons/favicon.png' %}">
+    <!-- 
+    <link rel="manifest" href="{% static 'AuthenticApp/icons/site.html' %}">
+    <link rel="mask-icon" href="{% static 'AuthenticApp/icons/safari-pinned-tab.svg' %}" color="#666666">
+    <link rel="shortcut icon" href="{% static 'AuthenticApp/icons/favicon.ico' %}">
+    <meta name="msapplication-config" content="{% static 'AuthenticApp/icons/browserconfig.xml' %}">
+    -->
+    <link rel="font-awesome" href="{% static 'AuthenticApp/fonts/flaming/flaming-webfont.woff2' %}">
+    <link rel="font-awesome" href="{% static 'AuthenticApp/fonts/flaming/flaming-webfont.woff' %}">
+
+    <meta name="apple-mobile-web-app-title" content="Pin Store">
+    <meta name="application-name" content="Pin Store">
+    <meta name="msapplication-TileColor" content="#cc9966">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Plugins CSS File -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'AuthenticApp/css/login/bootstrap.min.css' %}">  
+    <link rel="stylesheet" href="{% static 'AuthenticApp/css/login/icons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'AuthenticApp/css/login/style.css' %}"> 
+    
+    <link rel="stylesheet" href="{% static 'AuthenticApp/css/login/mystyle.css' %}"> 
+    <link rel="stylesheet" href="{% static 'AuthenticApp/css/login/background.css' %}">  
+</head>
+
+<body>
+    
+        <div  class="modal-dialog" >
+            <div class="modal-content">
+                <div class="modal-body">
+                    
+                    <div class="form-box">
+                        <div class="form-tab">
+                            <div class=" ">
+                                <img src="{% static 'AuthenticApp/logoX.png' %}" class="header-center"  alt="Pin Logo" width="105" height="25" />
+                            </div>
+                            <ul class="nav nav-pills nav-fill" role="tablist">  
+                                <li class="nav-item">
+                                    <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">Register</a>
+                                </li> 
+                            </ul>
+                            {% block content %}
+                            
+
+                                <div class="tab-pane " id="register" role="tabpanel" aria-labelledby="register-tab">
+                                    <form action="{% url 'register' %}"  method="post"  enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        {% if messages %}
+                                            <ul class="messages">
+                                                {% for message in messages %}
+                                                <li {% if message.tags %} style="color: rgb(230, 6, 6);" class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% endif %}
+                                        <div class="row">
+                                            <div class="form-group col-sm-6"> 
+                                                <label for="register-fname ">First Name *</label>
+                                                <input type="text" class="form-control" id="register-fname" name="register-fname" required>
+                                            </div>
+                                            <div class="form-group col-sm-6"> 
+                                                <label for="register-fname ">Last Name *</label>
+                                                <input type="text" class="form-control" id="register-lname" name="register-lname" required>
+                                            </div><!-- End .form-group -->
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="register-email ">Your email address *</label>
+                                            <input type="email" class="form-control" id="register-email" name="register-email" required> 
+                                        </div><!-- End .form-group -->
+                                        <div class="row">
+                                            <div class="form-group col-sm-6"> 
+                                                <label for="register-address">Your (H.No, Street , Town) *</label>
+                                                <p><textarea type="text" class="txtBox" placeholder="Address (H.No, Street , Town)" id="register-address" name="register-address" required></textarea></p>
+                                            </div>
+                                            <div class="form-group col-sm-6"> 
+                                                <label for="register-address-Country">Your (City, Province, State) *</label>
+                                                <p><textarea type="text" class="txtBox" placeholder="Address (City, Province, State) " id="register-address-Country" name="register-address-Country" required></textarea></p>
+                                            </div>
+                                           
+                                        </div>
+                                        <div class="form-group col-sm-12"> 
+                                            <label for="register-phoneNumber">Phone Number *</label>
+                                            <input type="tel" class="form-control" id="register-phoneNumber" name="register-phoneNumber" required>
+                                        </div><!-- End .form-group -->
+                                        
+                                        <div class="row">
+                                            <div class="col-sm-6"> 
+                                                <label for="register_Gender">Gender *</label>
+                                                <div name="register_Gender" class="form-control">
+                                                    <select id="options"  name="register_Gender"  class="selectdata custom-select" required>
+                                                        <option  value="" disabled selected>Select Gender</option>
+                                                        <option  name="register_Gender" value="Male">Male</option>
+                                                        <option  name="register_Gender" value="Female">Female</option>
+                                                        <option  name="register_Gender" value="Other">Other</option>
+                                                    </select>
+                                                        
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-sm-6"> 
+                                                <label for="register-DoB">Date of Birth *</label>
+                                                <input type="date" class="form-control" id="register-DoB" name="register-DoB" required> 
+                                            
+                                            </div><!-- End .form-group -->
+                                        </div> 
+                                        <div class="row">
+                                            <div class="form-group col-sm-6"> 
+                                                <label for="register-password">Password *</label>
+                                                <input type="password" class="form-control" id="register-password" name="register-password" required>
+                                            </div>
+                                            <div class="form-group col-sm-6"> 
+                                                <label for="Conf-register-password">Confirm Password *</label>
+                                                <input type="password" class="form-control" id="Conf-register-password" name="Conf-register-password" required>
+                                            </div><!-- End .form-group -->
+                                        </div>
+                                        
+                                        <div class="form-footer">
+                                            <button type="submit" class="btn btn-outline-primary-2">
+                                                <span>SIGN UP</span> 
+                                                <i class="material-icons">add</i>
+                                            </button>
+
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="register-policy" required>
+                                                <label class="custom-control-label" for="register-policy">I agree to the <a href="#">privacy policy</a> *</label>
+                                            </div><!-- End .custom-checkbox -->
+                                        </div><!-- End .form-footer -->
+                                    </form>
+                                    <div class="form-choice">
+                                        <p class="text-center"> 
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <a href="{% url 'lgIn' %}" class="btn btn-login btn-g"> 
+                                                    <i class="material-icons">login</i>
+                                                    Back to Login 
+                                                </a>  
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <p class="text-center">   or sign in with  </p>
+                                            </div>
+                                        </div> 
+                                    </p>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <a href="#" class="btn btn-login btn-g"> 
+                                                    <i class="material-icons">gmail</i>
+                                                    Login With Google
+                                                </a>
+                                            </div><!-- End .col-6 -->
+                                            <div class="col-sm-6">
+                                                <a href="#" class="btn btn-login  btn-f"> 
+                                                    <i class="material-icons">facebook</i>
+                                                    Login With Facebook
+                                                </a>
+                                            </div><!-- End .col-6 -->
+                                        </div><!-- End .row -->
+                                    </div><!-- End .form-choice -->
+                                </div><!-- .End .tab-pane -->  
+
+                            </div><!-- End .tab-content -->
+                            {% endblock %}
+                        </div><!-- End .form-tab -->
+                    </div><!-- End .form-box -->
+                </div><!-- End .modal-body -->
+            </div><!-- End .modal-content -->
+        </div><!-- End .modal-dialog -->
+    </div><!-- End .modal -->
+
+    <!-- Plugins JS File -->
+    {% load static %}
+    <script src="{% static 'AuthenticApp/js/login/jquery.min.js' %}"></script>
+    <script src="{% static 'AuthenticApp/js/login/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'AuthenticApp/js/login/jquery.hoverIntent.min.js' %}"></script>
+    <script src="{% static 'AuthenticApp/js/login/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'AuthenticApp/js/login/superfish.min.js' %}"></script>
+    <script src="{% static 'AuthenticApp/js/login/owl.carousel.min.js' %}"></script>
+    <!-- Main JS File -->
+    <script src="{% static 'AuthenticApp/js/login/main.js' %}"></script> 
+
+    <script>
+        $(document).ready(function(){
+           
+            $("#myModal").modal();
+            
+        });
+        $("#myModal").click(function(){
+            $("#myModal").modal();
+        });
+        </script>
+</body>
+
+
+<!--  register.html  22 Jan 2024 10:04:03 GMT -->
+</html>
