@@ -1,0 +1,253 @@
+
+<form action="{% url 'update_time_setting' time.Pk_Time_ID %}" method="post" enctype="multipart/form-data"> 
+    {% csrf_token %}
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="form-control">Date Start</h2>
+      <select  class="form-control" id="input_DateFrom"  name="input_DateFrom" placeholder="Date From"  onchange='CheckDateFrom(this.value);'>  
+        <option  class="form-control"  value="{{time.DateFrom}}" disabled selected>{{time.DateFrom}}</option>
+        <option  class="form-control"   name="input_DateFrom" value="Monday">Monday</option>
+        <option  class="form-control"  name="input_DateFrom" value="Tuesday">Tuesday</option> 
+        <option  class="form-control"  name="input_DateFrom"  value="Wednesday">Wednesday</option> 
+        <option  class="form-control"   name="input_DateFrom" value="Thursday">Thursday</option>
+        <option  class="form-control"  name="input_DateFrom" value="Friday">Friday</option> 
+        <option  class="form-control"  name="input_DateFrom" value="Satureday">Satureday</option>
+        <option  class="form-control"  name="input_DateFrom" value="Sunday">Sunday</option>
+   </select> 
+   <input type="text"  class="form-control" value="{{time.DateFrom}}"  id="input_DateFrom"  style='display:none;'/> 
+    </div>
+    <div class="col-md-6">
+      <h2 class="form-control">Date End</h2>
+      <select  class="form-control"   name="input_DateTo" placeholder="Date To"  onchange='CheckDateTo(this.value);'> 
+        <option  class="form-control"  value="{{time.DateTo}}"  disabled selected>{{time.DateTo}}</option>
+        <option  class="form-control"   name="input_DateTo" value="Monday">Monday</option>
+        <option  class="form-control"  name="input_DateTo" value="Tuesday">Tuesday</option> 
+        <option  class="form-control"  name="input_DateTo"  value="Wednesday">Wednesday</option> 
+        <option  class="form-control"   name="input_DateTo" value="Thursday">Thursday</option>
+        <option  class="form-control"  name="input_DateTo" value="Friday">Friday</option> 
+        <option  class="form-control"  name="input_DateTo" value="Satureday">Satureday</option>
+        <option  class="form-control"  name="input_DateTo" value="Sunday">Sunday</option>
+   </select> 
+    </div> 
+  </div>
+   <br> <br>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="form-control">Starting Time</h2>
+      <div class="row">
+        <div class="col-md-6"> 
+          <h2 class="form-control">Hours</h2>
+        <select  class="form-control"   name="input_TimeStartHour" placeholder="Starting Time Hours"  onchange='CheckTimeStartHour(this.value);'> 
+          <option  class="form-control" value="{{time.TimeFromHour}}"   disabled selected>{{time.TimeFromHour}}</option>
+          <option  class="form-control"   name="input_TimeStartHour" value="01">01</option>  
+          <option  class="form-control"   name="input_TimeStartHour" value="02">02</option> 
+          <option  class="form-control"   name="input_TimeStartHour" value="03">03</option> 
+          <option  class="form-control"   name="input_TimeStartHour" value="04">04</option> 
+          <option  class="form-control"   name="input_TimeStartHour" value="05">05</option> 
+          <option  class="form-control"   name="input_TimeStartHour" value="06">06</option> 
+          <option  class="form-control"   name="input_TimeStartHour" value="07">07</option> 
+          <option  class="form-control"   name="input_TimeStartHour" value="08">08</option> 
+          <option  class="form-control"   name="input_TimeStartHour" value="09">09</option> 
+          <option  class="form-control"   name="input_TimeStartHour" value="10">10</option> 
+          <option  class="form-control"   name="input_TimeStartHour" value="11">11</option> 
+          <option  class="form-control"   name="input_TimeStartHour" value="12">12</option> 
+          <option  class="form-control"   name="input_TimeStartHour" value="13">13</option>  
+          <option  class="form-control"   name="input_TimeStartHour" value="14">14</option> 
+          <option  class="form-control"   name="input_TimeStartHour" value="15">15</option> 
+          <option  class="form-control"   name="input_TimeStartHour" value="16">16</option> 
+          <option  class="form-control"   name="input_TimeStartHour" value="17">17</option> 
+          <option  class="form-control"   name="input_TimeStartHour" value="18">18</option> 
+          <option  class="form-control"   name="input_TimeStartHour" value="19">19</option> 
+          <option  class="form-control"   name="input_TimeStartHour" value="20">20</option> 
+          <option  class="form-control"   name="input_TimeStartHour" value="21">21</option> 
+          <option  class="form-control"   name="input_TimeStartHour" value="22">22</option> 
+          <option  class="form-control"   name="input_TimeStartHour" value="23">23</option> 
+          <option  class="form-control"   name="input_TimeStartHour" value="00">00</option> 
+        </select>
+        </div>
+        <div class="col-md-6">
+          <h2 class="form-control">Minutes</h2>
+          <select  class="form-control"   name="input_TimeStartMin" placeholder="Starting Time"  onchange='CheckTimeStartMin(this.value);'> 
+            <option  class="form-control" value="{{time.TimeFromMin}}" disabled selected>{{time.TimeFromMin}}</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="00">00</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="01">01</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="02">02</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="03">03</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="04">04</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="05">05</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="06">06</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="07">07</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="08">08</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="09">09</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="10">10</option> 
+            <option  class="form-control"   name="input_TimeStartMin" value="11">11</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="12">12</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="13">13</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="14">14</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="15">15</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="16">16</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="17">17</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="18">18</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="19">19</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="20">20</option> 
+            <option  class="form-control"   name="input_TimeStartMin" value="21">21</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="22">22</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="23">23</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="24">24</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="25">25</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="26">26</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="27">27</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="28">28</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="29">29</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="30">30</option>  
+            <option  class="form-control"   name="input_TimeStartMin" value="31">31</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="32">32</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="33">33</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="34">34</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="35">35</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="36">36</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="37">37</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="38">38</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="39">39</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="40">40</option> 
+            <option  class="form-control"   name="input_TimeStartMin" value="41">41</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="42">42</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="43">43</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="44">44</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="45">45</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="46">46</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="47">47</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="48">48</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="49">49</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="50">50</option> 
+            <option  class="form-control"   name="input_TimeStartMin" value="51">51</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="52">52</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="53">53</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="54">54</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="55">55</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="56">56</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="57">57</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="58">58</option>
+            <option  class="form-control"   name="input_TimeStartMin" value="59">59</option>  
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h2 class="form-control">Finish Time</h2>
+      <div class="row">
+        <div class="col-md-6"> 
+          <h2 class="form-control">Hours</h2>
+        <select  class="form-control"   name="input_TimeToHour" placeholder="Finishing Hours"  onchange='CheckTimeToHour(this.value);'> 
+          <option  class="form-control" value="{{time.TimeToHour}}" disabled selected>{{time.TimeToHour}}</option>
+          <option  class="form-control"   name="input_TimeToHour" value="01">01</option>  
+          <option  class="form-control"   name="input_TimeToHour" value="02">02</option> 
+          <option  class="form-control"   name="input_TimeToHour" value="03">03</option> 
+          <option  class="form-control"   name="input_TimeToHour" value="04">04</option> 
+          <option  class="form-control"   name="input_TimeToHour" value="05">05</option> 
+          <option  class="form-control"   name="input_TimeToHour" value="06">06</option> 
+          <option  class="form-control"   name="input_TimeToHour" value="07">07</option> 
+          <option  class="form-control"   name="input_TimeToHour" value="08">08</option> 
+          <option  class="form-control"   name="input_TimeToHour" value="09">09</option> 
+          <option  class="form-control"   name="input_TimeToHour" value="10">10</option> 
+          <option  class="form-control"   name="input_TimeToHour" value="11">11</option> 
+          <option  class="form-control"   name="input_TimeToHour" value="12">12</option> 
+          <option  class="form-control"   name="input_TimeToHour" value="13">13</option>  
+          <option  class="form-control"   name="input_TimeToHour" value="14">14</option> 
+          <option  class="form-control"   name="input_TimeToHour" value="15">15</option> 
+          <option  class="form-control"   name="input_TimeToHour" value="16">16</option> 
+          <option  class="form-control"   name="input_TimeToHour" value="17">17</option> 
+          <option  class="form-control"   name="input_TimeToHour" value="18">18</option> 
+          <option  class="form-control"   name="input_TimeToHour" value="19">19</option> 
+          <option  class="form-control"   name="input_TimeToHour" value="20">20</option> 
+          <option  class="form-control"   name="input_TimeToHour" value="21">21</option> 
+          <option  class="form-control"   name="input_TimeToHour" value="22">22</option> 
+          <option  class="form-control"   name="input_TimeToHour" value="23">23</option> 
+          <option  class="form-control"   name="input_TimeToHour" value="00">00</option> 
+        </select>
+        </div>
+        <div class="col-md-6">
+          <h2 class="form-control">Minutes</h2>
+          <select  class="form-control"   name="input_TimeToMin" placeholder="Finishing Time"  onchange='CheckTimeToMin(this.value);'> 
+            <option  class="form-control" value="{{time.TimeToMin}}" disabled selected>{{time.TimeToMin}}</option>
+            <option  class="form-control"   name="input_TimeToMin" value="00">00</option>
+            <option  class="form-control"   name="input_TimeToMin" value="01">01</option>
+            <option  class="form-control"   name="input_TimeToMin" value="02">02</option>
+            <option  class="form-control"   name="input_TimeToMin" value="03">03</option>
+            <option  class="form-control"   name="input_TimeToMin" value="04">04</option>
+            <option  class="form-control"   name="input_TimeToMin" value="05">05</option>
+            <option  class="form-control"   name="input_TimeToMin" value="06">06</option>
+            <option  class="form-control"   name="input_TimeToMin" value="07">07</option>
+            <option  class="form-control"   name="input_TimeToMin" value="08">08</option>
+            <option  class="form-control"   name="input_TimeToMin" value="09">09</option>
+            <option  class="form-control"   name="input_TimeToMin" value="10">10</option> 
+            <option  class="form-control"   name="input_TimeToMin" value="11">11</option>
+            <option  class="form-control"   name="input_TimeToMin" value="12">12</option>
+            <option  class="form-control"   name="input_TimeToMin" value="13">13</option>
+            <option  class="form-control"   name="input_TimeToMin" value="14">14</option>
+            <option  class="form-control"   name="input_TimeToMin" value="15">15</option>
+            <option  class="form-control"   name="input_TimeToMin" value="16">16</option>
+            <option  class="form-control"   name="input_TimeToMin" value="17">17</option>
+            <option  class="form-control"   name="input_TimeToMin" value="18">18</option>
+            <option  class="form-control"   name="input_TimeToMin" value="19">19</option>
+            <option  class="form-control"   name="input_TimeToMin" value="20">20</option> 
+            <option  class="form-control"   name="input_TimeToMin" value="21">21</option>
+            <option  class="form-control"   name="input_TimeToMin" value="22">22</option>
+            <option  class="form-control"   name="input_TimeToMin" value="23">23</option>
+            <option  class="form-control"   name="input_TimeToMin" value="24">24</option>
+            <option  class="form-control"   name="input_TimeToMin" value="25">25</option>
+            <option  class="form-control"   name="input_TimeToMin" value="26">26</option>
+            <option  class="form-control"   name="input_TimeToMin" value="27">27</option>
+            <option  class="form-control"   name="input_TimeToMin" value="28">28</option>
+            <option  class="form-control"   name="input_TimeToMin" value="29">29</option>
+            <option  class="form-control"   name="input_TimeToMin" value="30">30</option>  
+            <option  class="form-control"   name="input_TimeToMin" value="31">31</option>
+            <option  class="form-control"   name="input_TimeToMin" value="32">32</option>
+            <option  class="form-control"   name="input_TimeToMin" value="33">33</option>
+            <option  class="form-control"   name="input_TimeToMin" value="34">34</option>
+            <option  class="form-control"   name="input_TimeToMin" value="35">35</option>
+            <option  class="form-control"   name="input_TimeToMin" value="36">36</option>
+            <option  class="form-control"   name="input_TimeToMin" value="37">37</option>
+            <option  class="form-control"   name="input_TimeToMin" value="38">38</option>
+            <option  class="form-control"   name="input_TimeToMin" value="39">39</option>
+            <option  class="form-control"   name="input_TimeToMin" value="40">40</option> 
+            <option  class="form-control"   name="input_TimeToMin" value="41">41</option>
+            <option  class="form-control"   name="input_TimeToMin" value="42">42</option>
+            <option  class="form-control"   name="input_TimeToMin" value="43">43</option>
+            <option  class="form-control"   name="input_TimeToMin" value="44">44</option>
+            <option  class="form-control"   name="input_TimeToMin" value="45">45</option>
+            <option  class="form-control"   name="input_TimeToMin" value="46">46</option>
+            <option  class="form-control"   name="input_TimeToMin" value="47">47</option>
+            <option  class="form-control"   name="input_TimeToMin" value="48">48</option>
+            <option  class="form-control"   name="input_TimeToMin" value="49">49</option>
+            <option  class="form-control"   name="input_TimeToMin" value="50">50</option> 
+            <option  class="form-control"   name="input_TimeToMin" value="51">51</option>
+            <option  class="form-control"   name="input_TimeToMin" value="52">52</option>
+            <option  class="form-control"   name="input_TimeToMin" value="53">53</option>
+            <option  class="form-control"   name="input_TimeToMin" value="54">54</option>
+            <option  class="form-control"   name="input_TimeToMin" value="55">55</option>
+            <option  class="form-control"   name="input_TimeToMin" value="56">56</option>
+            <option  class="form-control"   name="input_TimeToMin" value="57">57</option>
+            <option  class="form-control"   name="input_TimeToMin" value="58">58</option>
+            <option  class="form-control"   name="input_TimeToMin" value="59">59</option>  
+          </select>
+        </div>
+      </div>
+    </div> 
+    <button type="submit" class="btn" value="submit">Submit</button><pre> 
+    <a href="{% url 'time_delete' time.Pk_Time_ID %}" class="btn" style="background-color: red;" value="Delete"><p class="material-icons">delete</p></a></pre>
+  </div> 
+
+  </form>
+  
+<script>
+  
+    function CheckDateFrom(val){
+      var element=document.getElementById('input_DateFrom');
+      if(val=='pick a status'||val=='others')
+        element.style.display='block';
+      else  
+        element.style.display='none';
+     }
+  </script>
+  

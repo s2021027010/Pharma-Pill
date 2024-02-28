@@ -1,0 +1,74 @@
+{% load static %}
+ 
+<link rel="stylesheet" href="{% static 'StorePharma/css/boot.min.css' %}">
+{% load custom_tag %}  
+{% if user.is_authenticated %}  
+       {% block content %} 
+       <div class="container"> 
+        <h2 class="heading"> About <span style="color: rgb(230, 6, 6);"> Pharma Pill </span></h2>
+       <form action="{% url 'about_pharma' %}"  method="post"  enctype="multipart/form-data">
+            {% csrf_token %}
+           <div class="row">
+            <div class="col-md-12">
+                <h2 class="form-control" for="about_title">About Title *</h2>
+                <input type="text"  class="form-control" id="about_title" value="{{about.about_Title}}" name="about_title" required>
+            </div>  
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="form-control" for="about_describe">About Description *</h2>
+                <textarea type="text" class="form-control" id="about_describe" name="about_describe" required>{{about.about_Describe}}</textarea>
+            </div>  
+        </div>
+        
+        <div class="row"> 
+            <div class="col-md-12">
+                <h2 class="form-control" for="about_Image">Image Upload *</h2>
+                <input type="file"  accept="image/*"  class="form-control" id="about_Image" name="about_Image" required>
+            </div>  
+        </div>
+        
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="form-control" for="about_admin_email">Admin Email *</h2>
+                <input type="email" class="form-control" id="about_admin_email" name="about_admin_email" value="{{about.about_admin_email}}" required> 
+            </div>  
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="form-control" for="about_contact">Admin Contact *</h2>
+                <input type="text" class="form-control" id="about_contact" name="about_contact" value="{{about.about_contact}}" required>
+            </div>  
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="form-control" for="about_address">Pharma Pill Address *</h2>
+                <textarea type="text" class="form-control" id="about_address" name="about_address" required>{{about.about_address}}</textarea>
+            </div>  
+        </div>
+
+        <input type="text"  class="form-control" id="about_ID" name="about_ID" value="{{about.Pk_about_ID}}" hidden>
+        <div class="row">
+           <div class="form-footer"  style="max-width: 45%;"> 
+               <button type="submit" class="btn " >
+                   <span>Save </span> <span class="material-icons">info</span> 
+               </button> 
+            </div>
+            {% for about in obj_about %}  
+            <pre>   </pre>
+            <div class="form-footer"  style="max-width: 45%;"> 
+                    <button type="submit" class="btn" style="background-color: red; color: white;" >
+                        <a href="{% url 'delete_about' about.Pk_about_ID %}" style="color: white;"><span class="material-icons">delete</span> </a>
+                    </button> 
+            </div> 
+                
+             {% endfor %} 
+          
+           </div><!-- End .form-footer -->
+           
+       </form>  
+    </div>
+   {% endblock %} 
+
+{% endif %}  

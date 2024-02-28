@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--  admin_Control.html  22 Nov 2019 10:04:03 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Control - Pharma Pill</title>
+    <meta name="keywords" content="HTML5 Template">
+    <meta name="description" content="Pharma Pill">
+    <meta name="author" content="p-themes"> 
+
+    <!-- Favicon   -->
+    {% load static %}  
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'StorePharma/icons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'StorePharma/icons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'StorePharma/icons/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'StorePharma/icons/site.html' %}">
+    <link rel="mask-icon" href="{% static 'StorePharma/icons/favicon.png' %}" color="#666666">
+    <link rel="shortcut icon" href="{% static 'StorePharma/icons/favicon.png' %}">
+    <meta name="msapplication-config" content="{% static 'StorePharma/icons/favicon.png' %}"> 
+
+    <link rel="font-awesome" href="{% static 'StorePharma/fonts/flaming/flaming-webfont.woff2' %}">
+    <link rel="font-awesome" href="{% static 'StorePharma/fonts/flaming/flaming-webfont.woff' %}">
+
+    <meta name="apple-mobile-web-app-title" content="Pharma Pill">
+    <meta name="application-name" content="Pharma Pill">
+    <meta name="msapplication-TileColor" content="#cc9966">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="{% static 'StorePharma/css/cartlist.css' %}">
+    <link rel="stylesheet" href="{% static 'StorePharma/css/admincontrol.css' %}">
+    <link rel="stylesheet" href="{% static 'StorePharma/css/boot.min.css' %}"> 
+  </head>
+  
+<body>
+    {% include 'Menu/header.html' %}    
+</br>  </br> </br></br> 
+<section id="services" class="services"> 
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <h2>
+          <li {% if message.tags %} style="color: rgb(230, 6, 6);" class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        </h2>
+      {% endfor %}
+    </ul>
+  {% endif %} 
+  <h1 class="heading"> Medicine <span style="color: rgb(230, 6, 6);"> Order </span></h1>
+<br>
+<span class="lblby" for="byInput">Search:</span>
+  <input type="text" id="myInput" style="max-width: fit-content;" onkeyup="myFunction()" placeholder="Search Text for" title="Type in a name">
+   
+  <span class="lblby" for="byInput">Filter By:</span>
+  <select class="selby" onkeyup="myFunction()"  style="max-width: fit-content;"  name="byInput" id="byInput"> 
+    <option  style="max-width: fit-content;" value="0" >Order ID</option>   
+    <option  style="max-width: fit-content;" value="1" selected>Order Email</option> 
+    <option  style="max-width: fit-content;" value="2" >Order Full Name</option> 
+    <option  style="max-width: fit-content;" value="3"  >Order Full Address</option> 
+    <option  style="max-width: fit-content;" value="4" >Order Contct</option>
+    <option  style="max-width: fit-content;" value="5" >Order Amount</option>
+    <option  style="max-width: fit-content;" value="6" >Order Status</option>
+  </select>
+  <table id="myTable" class="wrapper">
+    <form action="{% url 'order_status' %}"  method="post"  enctype="multipart/form-data"> 
+      {% csrf_token %}
+    <tr class="" style="background-color: rgb(144, 185, 209);">  
+      <th class="tableborder" >Order<span class="Whspace">__</span>ID</th>  
+      <th class="tableborder" >Order<span class="Whspace">__</span>Email</th>
+      <th class="tableborder" >Order<span class="Whspace">__</span>Full<span class="Whspace">__</span>Name</th>
+      <th class="tableborder" >Order<span class="Whspace">__</span>Full<span class="Whspace">__</span>Address</th>
+      <th class="tableborder" >Order<span class="Whspace">__</span>Contact</th>
+      <th class="tableborder" >Order<span class="Whspace">__</span>Amount</th> 
+      <th class="tableborder" >
+        <div class="row"> 
+        <select  class="tableborder" style="width: fit-content; border: none transparent;background-color: transparent; outline: none;"  name="orderStatus" placeholder="Order Status"  onchange='CheckStatusType(this.value);'> 
+          <option  class="col-75"    disabled selected>Order Status</option>
+          <option  class="col-75"   name="orderStatus"  placeholder="Status Order" value="Pendding">Pendding</option> 
+          <option  class="col-75"  name="orderStatus"  placeholder="Status Order" value="Passed">Passed</option>
+          <option  class="col-75"  name="orderStatus"  placeholder="Status Order" value="Waiting">Waiting</option> 
+          <option  class="col-75"  name="orderStatus"  placeholder="Status Order" value="Cancel">Cancel</option> 
+     </select> 
+     <button type="submit" title="Submit all the selected checkbox" class="iconMaskupdate" style="background-color: transparent;" ><p  class="material-icons ">edit_note</p></button>
+     </div>
+      </th> 
+      <th class="tableborder" >Action<span class="Whspace">__</span>Button
+         </th> 
+    </tr>
+    {% for ordered in obj_Order %}
+    <tr>
+      <td  class="tableborder" >{{ordered.Pk_order_ID}}</td> 
+      <td  class="tableborder" ><a href="mailto:{{ordered.order_email}}">{{ordered.order_email}}</a></td>
+      
+      
+      {% if user.is_staff  and ordered.order_email == user.email %} 
+      <td  class="tableborder" >Admin Staff</td>
+      {% else %}
+      {% for usr in obj_User  %}
+      {% if ordered.order_email == usr.email %}
+      <td  class="tableborder" >{{usr.first_name}} {{usr.last_name}}</td>
+      {% endif %}
+      {% endfor %} 
+      {% endif %}
+      
+
+      
+      {% if user.is_staff  and ordered.order_email == user.email %}
+      {% for about in obj_about %}
+      <td  class="tableborder" ><a href="https://www.google.com/maps/dir//{{about.about_address}}">{{about.about_address}}</a></td>
+      <td  class="tableborder" ><a href="tel:{{about.about_contact}}">{{about.about_contact}}</a></td>
+      {% endfor %}
+      {% else %}
+      {% for profile in obj_profile  %}
+      {% if ordered.order_email == profile.char_email %} 
+      
+        <td  class="tableborder" ><a href="https://www.google.com/maps/dir//{{profile.db_address}},{{profile.db_address_Country}}">{{profile.db_address}} {{profile.db_address_Country}}</a></td>
+        <td  class="tableborder" ><a href="tel:{{profile.db_phoneNumber}}">{{profile.db_phoneNumber}}</a></td>
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+     
+      
+      <td  class="tableborder" >{{ordered.Med_Price}}</td>
+      <td  class="tableborder" ><div class="row"> 
+        <div class="col-md-8"> 
+         {{ordered.status_Cart}}
+         </div>
+        <div class="checkbox-wrapper-13">  
+          <input  type="checkbox" value="{{ordered.Pk_order_ID}}"  name="status_list_ID" > 
+          </div> 
+          </div>
+         </td> 
+      <td  class="tableborder" > 
+        <a href="{% url 'order_delete_admin' ordered.Pk_order_ID %}" class="iconMaskupdate material-icons" style="background-color: transparent;"> delete</a> 
+        <a id="showView{{ordered.Pk_order_ID}}" class="iconMaskupdate"  titl="Visible" ><p  class="material-icons ">visibility</p></a>
+        
+        <div class="centerView{{ordered.Pk_order_ID}} hideform boxed wrapperY"  >
+          <div class="addfade wrapperY">
+            <a id="closeView{{ordered.Pk_order_ID}}" style="float: right;"><p class="material-icons"  style="color: rgba(230, 6, 6);">close</p> </a>
+              <div class="container">
+                {% include 'Admin/Admin_report.html' %}
+              </div>
+            
+        </div>
+        </div>
+        <script> 
+            $('#showView{{ordered.Pk_order_ID}}').on('click', function () {
+                $('.centerView{{ordered.Pk_order_ID}}').show();
+                $(this).hide();
+            })
+            $('#closeView{{ordered.Pk_order_ID}}').on('click', function () {
+                $('.centerView{{ordered.Pk_order_ID}}').hide();
+                $('#showView{{ordered.Pk_order_ID}}').show();
+            }) 
+        </script> 
+      </td>
+    </tr> 
+    {% endfor %}
+  </form>
+  </table>
+  
+</section> 
+  {% include 'Menu/footer.html' %}
+  
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+    
+    function myFunction() {
+      var searchby;
+      searchby =  document.getElementById("byInput").value;
+      var inputID, filterID, tableID, trID, tdID, iID, jID, txtValueID; 
+      inputID = document.getElementById("myInput");
+      filterID = inputID.value.toUpperCase();
+      tableID = document.getElementById("myTable");
+      trID = tableID.getElementsByTagName("tr");
+      for (iID = 0; iID < trID.length; iID++) { 
+        tdID = trID[iID].getElementsByTagName("td")[searchby]; 
+        if (tdID) {
+          txtValueID = tdID.textContent || tdID.innerText;
+          if (txtValueID.toUpperCase().indexOf(filterID) > -1) {
+            trID[iID].style.display = "";
+          } else {
+            trID[iID].style.display = "none";
+          }
+        } 
+    }
+       
+    }  
+  function CheckStatusType(val){
+    var element=document.getElementById('orderStatus');
+    if(val=='pick a status'||val=='others')
+      element.style.display='block';
+    else  
+      element.style.display='none';
+   }
+    
+  
+  $('#show').on('click', function () {
+      $('.center').show();
+      $(this).hide();
+  })
+  $('#close').on('click', function () {
+      $('.center').hide();
+      $('#show').show();
+  }) 
+  
+  
+  $('#showType').on('click', function () {
+      $('.centerType').show();
+      $(this).hide();
+  })
+  $('#closeType').on('click', function () {
+      $('.centerType').hide();
+      $('#showType').show();
+  }) 
+ 
+</script>
+ 
+ 
+ 
+</html>

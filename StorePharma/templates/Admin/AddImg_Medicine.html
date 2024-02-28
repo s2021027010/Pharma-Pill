@@ -1,0 +1,48 @@
+<div class="wrapperY"> 
+    <form action="{% url 'AddImg_Medicine' %}"  method="post"  enctype="multipart/form-data">
+        {% csrf_token %}  
+        <h2 class="titleBox"> Upload Image "<input id="id_Img" class="fit-content" style="color: red; background-color: transparent;" name="id_Img" value="{{show_med.Medicine_ID}}" readonly>"  </h2>
+        
+        <div class="row">
+          <div class="col-25">
+            <label for="UploadImg1">Upload Image 1</label>
+          </div>
+          <div class="col-75">
+            <input type="file" accept="image/*" id="UploadImg1" name="UploadImg1" title="uplaod Image" placeholder="Upload Image" >
+          </div> 
+        </div>
+        
+        <div class="row">
+          <div class="col-25">
+            <label for="UploadImg2">Upload Image 2</label>
+          </div>
+          <div class="col-75">
+            <input type="file" accept="image/*" id="UploadImg2" name="UploadImg2" title="uplaod Image" placeholder="Upload Image" >
+          </div> 
+        </div>
+        
+        <div class="row">
+          <div class="col-25">
+            <label for="UploadImg3">Upload Image 3</label>
+          </div>
+          <div class="col-75">
+            <input type="file" accept="image/*" id="UploadImg3" name="UploadImg3" title="uplaod Image" placeholder="Upload Image" >
+          </div> 
+        </div>
+        
+        <div class="row">
+          <div class="col-25">
+            <label for="UploadImg4">Upload Image 4</label>
+          </div>
+          <div class="col-75">
+            <input type="file" accept="image/*" id="UploadImg4" name="UploadImg4" title="uplaod Image" placeholder="Upload Image" >
+          </div> 
+        </div>
+          
+        <div class="btnNewAdd">
+            <input type="submit" class="btn" value="Save">
+        </div>
+        </form>
+     </div>
+     
+   

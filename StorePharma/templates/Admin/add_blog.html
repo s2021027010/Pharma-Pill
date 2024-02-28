@@ -1,0 +1,84 @@
+{% load static %}
+ 
+<link rel="stylesheet" href="{% static 'StorePharma/css/boot.min.css' %}">
+{% load custom_tag %}  
+{% if user.is_authenticated %}  
+       {% block content %} 
+       <div class="container"> 
+        <h2 class="heading"> Pharma Pill <span style="color: rgb(230, 6, 6);"> Blogs </span></h2>
+       <form action="{% url 'blog_pharma' %}"  method="post"  enctype="multipart/form-data">
+            {% csrf_token %}
+           <div class="row">
+            <div class="col-md-12">
+                <h2 class="form-control" for="blog_title">Blog Title *</h2>
+                <input type="text"  class="form-control" id="blog_title" value="" name="blog_title" required>
+            </div>  
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="form-control" for="blog_Medicine_Name">Blog Prefer Medicine Name *</h2>
+                <select  class="col-75"  name="blog_Medicine_Name" placeholder="Select Medicine" onchange='CheckStatusCompany(this.value);' required>  
+                    <option   name="blog_Medicine_Name"  disabled selected required="true">Select Prefer Medicine Name</option> 
+                    {% for medicine in medicine_show %} 
+                    <option  class="col-75"  name="blog_Medicine_Name" placeholder="Select Medicine" value="{{medicine.Med_LabelName}}" required="true">{{medicine.Med_LabelName}}</option> 
+                    {% endfor %} 
+                </select> 
+            </div>  
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="form-control" for="blog_describe">Blog Description *</h2>
+                <textarea type="text" class="form-control" id="blog_describe" name="blog_describe" required></textarea>
+            </div>  
+        </div>
+        
+        <div class="row"> 
+            <div class="col-md-12">
+                <h2 class="form-control" for="blog_Image">Bolg Image Upload *</h2>
+                <input type="file"  accept="image/*"  class="form-control" id="blog_Image" name="blog_Image" required>
+            </div>  
+        </div>
+        <input type="text"  class="form-control" id="blog_ID" name="blog_ID" value="" hidden>
+        <div class="row">
+            <div class="col-md-4">  
+           <div class="form-footer"  style="max-width: 45%;"> 
+               <button type="submit" class="btn " >
+                   <span>Save </span> <span class="material-icons">fact_check</span> 
+               </button> 
+            </div>
+            </div> 
+            
+          
+           </div><!-- End .form-footer --> 
+       </form>  
+       <br>
+       {% if not obj_blog %}
+
+       {% else %} 
+       <form action="{% url 'delete_blog' %}"  method="post"  enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">    
+                            <select  class="col-75"  name="blog_delete_ID" placeholder="Blog ID for Delete" onchange='CheckStatusCompany(this.value);' required>  
+                                <option   name="blog_delete_ID"  disabled selected required="true">Select to Delete Blog</option> 
+                                {% for blog in obj_blog %} 
+                                <option  class="col-75"  name="blog_delete_ID" placeholder="Blog ID for Delete" value="{{blog.Pk_blog_ID}}" required="true">{{blog.blog_Title}}</option> 
+                                {% endfor %} 
+                            </select> 
+                            <pre>    </pre>  
+                            <div class="form-footer" > 
+                                <button type="submit" class="btn material-icons" style="background-color: red; color: white;" >delete </button> 
+                            </div>  
+                    </div>
+             
+            </form>  
+       
+        {% endif %}
+
+
+
+
+    </div>
+   {% endblock %} 
+
+{% endif %}  

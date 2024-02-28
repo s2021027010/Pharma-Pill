@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--  admin_Control.html  22 Nov 2019 10:04:03 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Control - Pharma Pill</title>
+    <meta name="keywords" content="HTML5 Template">
+    <meta name="description" content="Pharma Pill">
+    <meta name="author" content="p-themes"> 
+
+    <!-- Favicon   -->
+    {% load static %}  
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'StorePharma/icons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'StorePharma/icons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'StorePharma/icons/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'StorePharma/icons/site.html' %}">
+    <link rel="mask-icon" href="{% static 'StorePharma/icons/favicon.png' %}" color="#666666">
+    <link rel="shortcut icon" href="{% static 'StorePharma/icons/favicon.png' %}">
+    <meta name="msapplication-config" content="{% static 'StorePharma/icons/favicon.png' %}"> 
+
+    <link rel="font-awesome" href="{% static 'StorePharma/fonts/flaming/flaming-webfont.woff2' %}">
+    <link rel="font-awesome" href="{% static 'StorePharma/fonts/flaming/flaming-webfont.woff' %}">
+
+    <meta name="apple-mobile-web-app-title" content="Pharma Pill">
+    <meta name="application-name" content="Pharma Pill">
+    <meta name="msapplication-TileColor" content="#cc9966">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="{% static 'StorePharma/css/admincontrol.css' %}">
+  </head>
+  
+<body>
+    {% include 'Menu/header.html' %}    
+</br>  </br> </br></br> 
+<section id="services" class="services"> 
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <h2>
+          <li {% if message.tags %} style="color: rgb(230, 6, 6);" class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        </h2>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  <div class="center hideform boxed wrapperY"  >
+    <div class="addfade wrapperY">
+      <button id="close" style="float: right;"><p class="material-icons"  style="color: rgba(230, 6, 6);">close</p> </button>
+          <div class="container">
+            {% include 'Admin/add_Medicine.html' %}
+          </div>
+      </form>
+  </div>
+</div>
+<div class="centerType hideform boxed wrapperY"  >
+  <div class="addfade wrapperY">
+    <button id="closeType" style="float: right;"><p class="material-icons"  style="color: rgba(230, 6, 6);">close</p> </button>
+      <div class="container">
+        {% include 'Admin/add_List.html' %}
+      </div>
+    </form>
+</div>
+</div> 
+<div class="btnNewAdd"> 
+  <button id="showType" class="btnAddNew"><p class="material-icons"  style="color: rgba(246, 248, 252, 0.89);">edit</p>Add Type/Company </button>
+ <button id="show" class="btnAddNew"><p class="material-icons"  style="color: rgba(246, 248, 252, 0.89);">edit</p>Add Medicine</button>
+</div>
+ 
+<br>
+<span class="lblby" for="byInput">Search:</span>
+  <input type="text" id="myInput" style="max-width: fit-content;" onkeyup="myFunction()" placeholder="Search Text for" title="Type in a name">
+   
+  <span class="lblby" for="byInput">Filter By:</span>
+  <select class="selby" onkeyup="myFunction()"  style="max-width: fit-content;"  name="byInput" id="byInput">
+    <option  style="max-width: fit-content;"  value="0">Medicine ID</option>
+    <option  style="max-width: fit-content;"  value="2" selected>Medicine Name</option> 
+    <option  style="max-width: fit-content;"  value="3">Company Name</option> 
+    <option  style="max-width: fit-content;"  value="4">Formula Name</option> 
+    <option  style="max-width: fit-content;"  value="5">Medicine Price</option>
+    <option  style="max-width: fit-content;"  value="6">Medicine Type</option> 
+    <option  style="max-width: fit-content;"  value="7">Expire Date</option> 
+    <option  style="max-width: fit-content;"  value="8">Status Check</option>
+    <option  style="max-width: fit-content;"  value="9">Medicine Size</option>
+    <option  style="max-width: fit-content;"  value="10">Medicine Used For</option> 
+    <option  style="max-width: fit-content;"  value="11">Medicine Describtion</option> 
+  </select>
+  <table id="myTable" class="wrapper">
+    <tr class="" style="background-color: rgb(144, 185, 209);">
+      <th class="tableborder" >Medicine<span class="Whspace">__</span>ID</th>
+      <th class="tableborder" >Medicine<span class="Whspace">___</span>Image</th>
+      <th class="tableborder" >Medicine<span class="Whspace">__</span>Name</th> 
+      <th class="tableborder" >Company<span class="Whspace">__</span>Name</th>
+      <th class="tableborder" >Formula<span class="Whspace">__</span>Name</th>
+      <th class="tableborder" >Price <span style="color: red;"> (-/each)</span></th> 
+      <th class="tableborder" >Medicine<span class="Whspace">__</span>Type</th> 
+      <th class="tableborder" >Expire<span class="Whspace">__</span>Date</th> 
+      <th class="tableborder" >Status<span class="Whspace">__</span>Check</th> 
+      <th class="tableborder" >Medicine<span class="Whspace">__</span>Size</th> 
+      <th class="tableborder" >Medicine<span class="Whspace">__</span>Used<span class="Whspace">_</span>For</th> 
+      <th class="tableborder" >Medicine<span class="Whspace">__</span>Describtion</th>
+      <th class="tableborder" >Production<span class="Whspace">__</span>Date</th> 
+    </tr>
+    {% for show_med in show_medicine %}
+    <tr>
+      <td  class="tableborder" ><p>{{forloop.counter}}</p>
+        <a href="{% url 'order_delete_admin' show_med.Medicine_ID %}" class="iconMaskdelete" title="Delete"><p  class="material-icons "  >delete</p></a>
+        
+        <div class="centerEdit{{show_med.Medicine_ID}} hideform boxed  wrapperY"  >
+          <div class="addfade  wrapperY">
+            <button id="closeEdit{{show_med.Medicine_ID}}" style="float: right;"><p class="material-icons"  style="color: rgba(230, 6, 6);">close</p> </button>
+            <div class="container">
+              {% include 'Admin/update_Medicine.html' %}
+            </div>
+        </div>
+        </div>
+        <input id="pass_id{{show_med.Medicine_ID}}" value="{{show_med.Medicine_ID}}" name="pass_id" hidden>
+        <button id="showEdit{{show_med.Medicine_ID}}" class="iconMaskupdate"  titl="Update" ><p  class="material-icons ">edit_note</p></button>
+        
+      <script>
+                
+          $('#showEdit{{show_med.Medicine_ID}}').on('click', function () {
+              $('.centerEdit{{show_med.Medicine_ID}}').show();
+              var value = $("#pass_id{{show_med.Medicine_ID}}").val();
+              $("#id_get").val(value);  
+              $(this).hide();
+          })
+          
+          $('#closeEdit{{show_med.Medicine_ID}}').on('click', function () {
+              $('.centerEdit{{show_med.Medicine_ID}}').hide();
+              $('#showEdit{{show_med.Medicine_ID}}').show();
+          }) 
+      </script>
+       <div class="centerDetail{{show_med.Medicine_ID}} hideform boxed"  >
+                 
+        <div class="containerFv">
+          <button id="closeDetail{{show_med.Medicine_ID}}" style="float: right;"><p class="material-icons"  style="color: rgba(230, 6, 6);">close</p> </button>
+        
+          {% include 'User/fullView.html' %}
+        
+    </div>
+    </div>
+    <button id="showDetail{{show_med.Medicine_ID}}" class="iconMaskupdate"  titl="Visible" ><p  class="material-icons ">visibility</p></button>
+     
+    <script>   
+        $('#showDetail{{show_med.Medicine_ID}}').on('click', function () {
+            $('.centerDetail{{show_med.Medicine_ID}}').show();
+            var value = $("#pass_id{{show_med.Medicine_ID}}").val();
+            $("#id_get").val(value);  
+            $(this).hide();
+        })
+        
+        $('#closeDetail{{show_med.Medicine_ID}}').on('click', function () {
+            $('.centerDetail{{show_med.Medicine_ID}}').hide();
+            $('#showDetail{{show_med.Medicine_ID}}').show();
+        }) 
+    </script>
+      </td>
+      <td  class="tableborder" >
+        <div class="row">
+          
+        <a href="{{BASIC_DIR}}/Auth/media/{{show_med.Med_photo}}"  class="imgTable">
+          <img src="{{BASIC_DIR}}/Auth/media/{{show_med.Med_photo}}"  class="imgTable" width="50px" height="50px">
+        </a>
+                
+        <div class="centerImg{{show_med.Medicine_ID}} hideform boxed"  >
+          <div class="addfade">
+            <button id="closeImg{{show_med.Medicine_ID}}" style="float: right;"><p class="material-icons"  style="color: rgba(230, 6, 6);">close</p> </button>
+            <div class="container">
+              {% include 'Admin/AddImg_Medicine.html' %}
+             </div>
+        </div>
+        </div>
+        <input id="Img_id{{show_med.Medicine_ID}}" value="{{show_med.Medicine_ID}}" name="Img_id" hidden>
+        <button id="showImg{{show_med.Medicine_ID}}" class="iconMaskupdate"  titl="Add Image" ><p  class="material-icons ">edit</p></button>
+      </div>
+      <script>
+                
+          $('#showImg{{show_med.Medicine_ID}}').on('click', function () {
+              $('.centerImg{{show_med.Medicine_ID}}').show();
+              var value = $("#Img_id{{show_med.Medicine_ID}}").val();
+              $("#id_Img").val(value);  
+              $(this).hide();
+          })
+          
+          $('#closeImg{{show_med.Medicine_ID}}').on('click', function () {
+              $('.centerImg{{show_med.Medicine_ID}}').hide();
+              $('#showImg{{show_med.Medicine_ID}}').show();
+          }) 
+      </script>
+      </td> 
+      <td  class="tableborder" >{{show_med.Med_LabelName}}</td> 
+
+      <td  class="tableborder" > 
+        {% for list in obj_Option %}
+           {% if list.Option_ID == show_med.Med_CompanyName %}
+           {{list.company_List}}
+           {% endif %}
+           {% endfor %}
+        <div class="centerCompany{{show_med.Medicine_ID}} hideform boxed"  >
+          <div class="addfade">
+            <button id="closeCompany{{show_med.Medicine_ID}}" style="float: right;"><p class="material-icons"  style="color: rgba(230, 6, 6);">close</p> </button>
+            <div class="container">
+              {% include 'Admin/update_list_Company.html' %}
+             </div>
+        </div>
+        </div>
+        <input id="pass_id{{show_med.Medicine_ID}}" value="{{show_med.Medicine_ID}}" name="pass_id" hidden>
+        <button id="showCompany{{show_med.Medicine_ID}}" class="iconMaskupdate"  titl="Add Image" ><p  class="material-icons ">edit_note</p></button>
+        <script>   
+          $('#showCompany{{show_med.Medicine_ID}}').on('click', function () {
+              $('.centerCompany{{show_med.Medicine_ID}}').show();
+              var value = $("#pass_id{{show_med.Medicine_ID}}").val();
+              $("#id_get").val(value);  
+              $(this).hide();
+          })
+          
+          $('#closeCompany{{show_med.Medicine_ID}}').on('click', function () {
+              $('.centerCompany{{show_med.Medicine_ID}}').hide();
+              $('#showCompany{{show_med.Medicine_ID}}').show();
+          }) 
+      </script>
+      </td>
+      <td  class="tableborder" >{{show_med.Med_FormulaName}}</td>
+      <td  class="tableborder" >{{show_med.Med_Sell_Price}}</td>
+      <td  class="tableborder" > 
+        {% for list in obj_Option %}
+           {% if list.Option_ID == show_med.Med_Type %}
+            {{list.type_List}}
+           {% endif %}
+        {% endfor %}
+           <div class="centerType{{show_med.Medicine_ID}} hideform boxed"  >
+            <div class="addfade">
+              <button id="closeType{{show_med.Medicine_ID}}" style="float: right;"><p class="material-icons"  style="color: rgba(230, 6, 6);">close</p> </button>
+              <div class="container">
+                {% include 'Admin/update_list_type.html' %}
+               </div>
+          </div>
+          </div>
+          <input id="pass_id{{show_med.Medicine_ID}}" value="{{show_med.Medicine_ID}}" name="pass_id" hidden>
+          <button id="showType{{show_med.Medicine_ID}}" class="iconMaskupdate"  titl="Add Image" ><p  class="material-icons ">edit_note</p></button>
+          <script>   
+            $('#showType{{show_med.Medicine_ID}}').on('click', function () {
+                $('.centerType{{show_med.Medicine_ID}}').show();
+                var value = $("#pass_id{{show_med.Medicine_ID}}").val();
+                $("#id_get").val(value);  
+                $(this).hide();
+            })
+            
+            $('#closeType{{show_med.Medicine_ID}}').on('click', function () {
+                $('.centerType{{show_med.Medicine_ID}}').hide();
+                $('#showType{{show_med.Medicine_ID}}').show();
+            }) 
+        </script>
+      </td>
+      <td  class="tableborder" >{{show_med.Med_ExpireDate}}</td>
+      <td  class="tableborder" >
+        {% if show_med.Med_Remain_Quantity == 0 %}
+        <span class="text-red blink-soft" >Not Available</span>
+        {% elif show_med.Med_Remain_Quantity <= 10 %}
+        <span class="text-blue" >Limited Medicine</span>
+        {% else %}
+        {{show_med.Med_Status}}
+        {% endif %}
+      </td>
+      <td  class="tableborder" >{{show_med.Med_Size}}</td>
+      <td  class="tableborder" ><textarea class="texthold" readonly>{{show_med.Med_UsedFor}}</textarea></td>
+      <td  class="tableborder" ><textarea class="texthold" readonly>{{show_med.Med_Describtion}} </textarea></td>
+      <td  class="tableborder" >{{show_med.Med_ProductionDate}}</td>
+    </tr> 
+    {% endfor %}
+
+  </table>
+
+
+
+
+  
+</section> 
+  {% include 'Menu/footer.html' %}
+  
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+    
+    function myFunction() {
+      var searchby;
+      searchby =  document.getElementById("byInput").value;
+      var inputID, filterID, tableID, trID, tdID, iID, jID, txtValueID; 
+      inputID = document.getElementById("myInput");
+      filterID = inputID.value.toUpperCase();
+      tableID = document.getElementById("myTable");
+      trID = tableID.getElementsByTagName("tr");
+      for (iID = 0; iID < trID.length; iID++) { 
+        tdID = trID[iID].getElementsByTagName("td")[searchby]; 
+        if (tdID) {
+          txtValueID = tdID.textContent || tdID.innerText;
+          if (txtValueID.toUpperCase().indexOf(filterID) > -1) {
+            trID[iID].style.display = "";
+          } else {
+            trID[iID].style.display = "none";
+          }
+        } 
+    }
+       
+    } 
+    
+  
+  $('#show').on('click', function () {
+      $('.center').show();
+      $(this).hide();
+  })
+  $('#close').on('click', function () {
+      $('.center').hide();
+      $('#show').show();
+  }) 
+  
+  
+  $('#showType').on('click', function () {
+      $('.centerType').show();
+      $(this).hide();
+  })
+  $('#closeType').on('click', function () {
+      $('.centerType').hide();
+      $('#showType').show();
+  }) 
+</script>
+ 
+ 
+ 
+</html>

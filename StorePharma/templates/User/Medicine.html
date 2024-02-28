@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--  Medicine.html  22 Nov 2019 10:04:03 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine - Pharma Pill</title>
+    <meta name="keywords" content="HTML5 Template">
+    <meta name="description" content="Pharma Pill">
+    <meta name="author" content="p-themes"> 
+
+    <!-- Favicon   -->
+    {% load static %}  
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'StorePharma/icons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'StorePharma/icons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'StorePharma/icons/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'StorePharma/icons/site.html' %}">
+    <link rel="mask-icon" href="{% static 'StorePharma/icons/favicon.png' %}" color="#666666">
+    <link rel="shortcut icon" href="{% static 'StorePharma/icons/favicon.png' %}">
+    <meta name="msapplication-config" content="{% static 'StorePharma/icons/favicon.png' %}"> 
+
+    <link rel="font-awesome" href="{% static 'StorePharma/fonts/flaming/flaming-webfont.woff2' %}">
+    <link rel="font-awesome" href="{% static 'StorePharma/fonts/flaming/flaming-webfont.woff' %}">
+
+    <meta name="apple-mobile-web-app-title" content="Pharma Pill">
+    <meta name="application-name" content="Pharma Pill">
+    <meta name="msapplication-TileColor" content="#cc9966">
+    <meta name="theme-color" content="#ffffff">
+
+  </head>
+  <link rel="stylesheet" href="{% static 'StorePharma/css/admincontrol.css' %}">
+<body>
+ 
+    {% include 'Menu/header.html' %}    
+     <!-- services -->
+      
+<section id="services" class="services"> 
+  <h1 class="heading"> Our <span style="color: rgb(230, 6, 6);"> Medicine </span></h1>
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <h2>
+          <li {% if message.tags %} style="color: rgb(230, 6, 6);" class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        </h2>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  <div class="box-container">
+    {% for show_med in show_medicine %}
+
+      <!--     start field -->
+      <div class="box">
+        <a href="{{BASIC_DIR}}/Auth/media/{{show_med.Med_photo}}"> 
+        <img src="{{BASIC_DIR}}/Auth/media/{{show_med.Med_photo}}" alt="Medicine Image">
+        </a>
+        <h3>{{show_med.Med_LabelName}} <span style="font-size: small;"> ({{show_med.Med_Size}}) </span> </h3> 
+        <p>Rs.{{show_med.Med_Sell_Price}}</p>
+        <div class="centerDetail{{show_med.Medicine_ID}} hideform boxed"  >
+           
+            <div class="containerFv">
+              <button id="closeDetail{{show_med.Medicine_ID}}" style="float: right;"><p class="material-icons"  style="color: rgba(230, 6, 6);">close</p> </button>
+            
+              {% include 'User/fullView.html' %}
+            
+        </div>
+        </div>
+        <a id="showDetail{{show_med.Medicine_ID}}" class="btn">Detail</a>
+        <script>   
+            $('#showDetail{{show_med.Medicine_ID}}').on('click', function () {
+                $('.centerDetail{{show_med.Medicine_ID}}').show();
+                var value = $("#pass_id{{show_med.Medicine_ID}}").val();
+                $("#id_get").val(value);  
+                $(this).hide();
+            })
+            
+            $('#closeDetail{{show_med.Medicine_ID}}').on('click', function () {
+                $('.centerDetail{{show_med.Medicine_ID}}').hide();
+                $('#showDetail{{show_med.Medicine_ID}}').show();
+            }) 
+        </script>
+      </div>
+      <!--     end field -->
+    {% endfor %}
+ 
+  </div>
+</section>
+    <!-- end services -->
+ 
+
+  {% include 'Menu/footer.html' %}
+</body>
+
+
+
+</html>

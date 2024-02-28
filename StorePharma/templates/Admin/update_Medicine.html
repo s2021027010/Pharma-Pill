@@ -1,0 +1,165 @@
+<div class="wrapperY"> 
+<form action="{% url 'update_Medicine' %}"  method="post"  enctype="multipart/form-data">
+    {% csrf_token %}  
+    <h2 class="titleBox"> Update Medicine "<input id="id_get" class="fit-content" value="{{show_med.Medicine_ID}}" style="color: red; background-color: transparent;" name="id_get" value="" readonly>" </h2>
+     <div class="row">
+      <div class="col-25">
+        <label for="medName">Medicine Name</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="medName" name="medName" value="{{show_med.Med_LabelName}}" placeholder="Medicine Name" >
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-25">
+        <label for="medPurchasePrice">Purchase Price <span style="color: red;">(-/each)</span></label>
+      </div>
+      <div class="col-75">
+        <input type="number" id="medPurchasePrice" name="medPurchasePrice" placeholder="Medicine Price (-/each)"  value="{{show_med.Med_Purchase_Price}}">
+      </div>
+    </div>  
+    <div class="row">
+      <div class="col-25">
+        <label for="medSellPrice">Selling Price <span style="color: red;">(-/each)</span></label>
+      </div>
+      <div class="col-75">
+        <input type="number" id="medSellPrice" name="medSellPrice" placeholder="Medicine Sell Price (-/each)" value="{{show_med.Med_Sell_Price}}">
+      </div>
+    </div>   
+    <div class="row">
+      <div class="col-25">
+        <label for="companyName">Company Name</label>
+      </div>
+      <div class="col-75">
+        <select  class="col-75"  name="companyName" placeholder="Company Name" onchange='CheckStatusCompany(this.value);'>  
+          {% for list in obj_Option %}
+          {% if list.Option_ID == show_med.Med_CompanyName %} 
+          <option value="{{list.Option_ID}}"   name="companyName" disabled selected>{{list.company_List}}</option>   
+          {% endif %}
+          {% endfor %}
+          {% for list in obj_Option %} 
+          {% if list.company_List != "N/A" %}
+          <option  class="col-75"  name="companyName" placeholder="Company Name" value="{{list.Option_ID}}">{{list.company_List}}</option> 
+          {% endif %}
+          {% endfor %}
+        </select>   
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="medType">Medicine Type</label>
+      </div>
+      <div class="col-75">
+        <select  class="col-75"  name="medType" placeholder="Medicine Type"  onchange='CheckStatusType(this.value);'> 
+          
+          {% for list in obj_Option %}  
+          {% if list.Option_ID == show_med.Med_Type %} 
+              <option value="{{list.Option_ID}}"   name="medType"  disabled selected>{{list.type_List}}</option>
+            {% endif %}
+          {% if list.type_List != "N/A" %} 
+            <option  class="col-75"  name="medType"  placeholder="Formula Name" value="{{list.Option_ID}}">{{list.type_List}}</option> 
+         {% endif %}
+         {% endfor %}
+       </select>  
+      </div>
+    </div>  
+    <div class="row">
+      <div class="col-25">
+        <label for="formulaName">Formula Name</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="formulaName" name="formulaName" placeholder="Formula Name" value="{{show_med.Med_FormulaName}}">
+      </div>
+    </div> 
+    <div class="row">
+      <div class="col-25">
+        <label for="exp-Date">Expire Date</label>
+      </div>
+      <div class="col-75">
+        <input type="date"  value="2024-01-01"  id="exp-Date" name="exp-Date" title="Expire Date" placeholder="Expire Date" >
+      </div>
+    </div> 
+    <div class="row">
+      <div class="col-25">
+        <label for="medSize">Medicine Size</label>
+      </div>
+      <div class="col-75">
+        <input type="text"  value="{{show_med.Med_Size}}"  id="medSize" name="medSize" title="Medicine Size (e.g: ml, mm, cm, cc)" placeholder="size (e.g: ml, mm, cm, cc)" >
+      </div>
+    </div> 
+    <div class="row">
+      <div class="col-25">
+        <label for="medBox">Medicine Box</label>
+      </div>
+      <div class="col-75">
+        <input type="number"  value="{{show_med.Med_Box}}"  id="medBox" name="medBox" title="Medicine Box" placeholder="Medicine Box" >
+      </div>
+    </div> 
+    
+    <div class="row">
+      <div class="col-25">
+        <label for="medQuantity">Medicine Quantity</label>
+      </div>
+      <div class="col-75">
+        <input type="number"  value="{{show_med.Med_Quantity}}"   id="medQuantity" name="medQuantity" title="Medicine Total Quantity" placeholder="Medicine Total Quantity"  required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="UploadImg">Upload Image</label>
+      </div>
+      <div class="col-75">
+        <input type="file" accept="image/*" id="UploadImg" name="UploadImg" title="uplaod Image" placeholder="Upload Image" value="">
+      </div> 
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="medUsedFor">Medicine Used-For</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="medUsedFor" name="medUsedFor" placeholder="Medicine Used-For" value="{{show_med.Med_UsedFor}}">
+      </div>
+    </div> 
+    <div class="row">
+      <div class="col-25">
+        <label for="medDecribe">Medicine Describtion</label>
+      </div>
+      <div class="col-75">
+        <textarea type="text" id="medDecribe" name="medDecribe" placeholder="Medicine Describtion" >{{show_med.Med_Describtion}}</textarea>
+      </div>
+    </div> 
+    <div class="row">
+      <div class="col-25">
+        <label for="productionDate">Production Date</label>
+      </div>
+      <div class="col-75">
+        <input type="date"  value="2020-01-01"  id="productionDate" name="productionDate" title="Production Date" placeholder="Production Date" >
+      </div>
+    </div>  
+    <div class="btnNewAdd">
+        <input type="submit" class="btn" value="Update">
+    </div>
+    </form>
+ </div>
+  
+ <script>
+  function CheckStatusCompany(val){
+    var element=document.getElementById('companyName');
+    if(val=='pick a status'||val=='others')
+      element.style.display='block';
+    else  
+      element.style.display='none';
+   }
+   
+   </script>
+<script>
+  function CheckStatusType(val){
+    var element=document.getElementById('medType');
+    if(val=='pick a status'||val=='others')
+      element.style.display='block';
+    else  
+      element.style.display='none';
+   }
+   
+   </script>

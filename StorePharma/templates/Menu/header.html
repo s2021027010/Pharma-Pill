@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--  home.html  22 Nov 2019 10:04:03 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="keywords" content="HTML5 Template">
+    <meta name="description" content="Pharma Pill">
+    <meta name="author" content="p-themes"> 
+
+    <!-- Favicon   -->
+    {% load static %}  
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'StorePharma/icons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'StorePharma/icons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'StorePharma/icons/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'StorePharma/icons/site.html' %}">
+    <link rel="mask-icon" href="{% static 'StorePharma/icons/favicon.png' %}" color="#666666">
+    <link rel="shortcut icon" href="{% static 'StorePharma/icons/favicon.png' %}">
+    <meta name="msapplication-config" content="{% static 'StorePharma/icons/favicon.png' %}"> 
+
+    <link rel="font-awesome" href="{% static 'StorePharma/fonts/flaming/flaming-webfont.woff2' %}">
+    <link rel="font-awesome" href="{% static 'StorePharma/fonts/flaming/flaming-webfont.woff' %}">
+
+    <meta name="apple-mobile-web-app-title" content="Pharma Pill">
+    <meta name="application-name" content="Pharma Pill">
+    <meta name="msapplication-TileColor" content="#cc9966">
+    <meta name="theme-color" content="#ffffff">
+
+    {% load static %}  
+    <link rel="stylesheet" href="{% static 'StorePharma/css/background.css' %}">  
+    <link rel="stylesheet" href="{% static 'StorePharma/css/home.css' %}"> 
+    <link rel="stylesheet" href="{% static 'StorePharma/css/homeNavbar.css' %}">  
+    <link rel="stylesheet" href="{% static 'StorePharma/css/searchbar.css' %}">  
+    <link rel="stylesheet" href="{% static 'StorePharma/css/navbartitle.css' %}">   
+</head>  
+<body>
+  {% include 'Menu/loaderPage.html' %}
+   <nav class="navbar header">
+    <a href="{% url 'home' %}"><div class=" logo">
+      <img src="{% static 'AuthenticApp/logo.png' %}" class=" logo"  alt="Pin Logo" width="100" height="40" />
+    </div></a>
+
+    <!-- NAVIGATION MENU -->
+
+        <div class="input-box">
+          <i class="uil uil-search"></i> 
+          <form action="{% url 'search' %}"  method="get">  
+            <input name="search" id="search" type="text" placeholder="Search here..." />
+            <button tpye="submit" class="button"><p class="material-icons">search</p></button>
+          </form> 
+        </div>
+
+  
+    <ul class="nav-links">
+
+      <!-- USING CHECKBOX HACK -->
+
+      <input type="checkbox" id="checkbox_toggle" />
+
+      <label for="checkbox_toggle" class="hamburger">&#9776;</label>
+
+      <!-- NAVIGATION MENUS -->
+ 
+      <div class="menu" > 
+         {% if user.is_staff %} 
+         
+        <li class="staff"><a href="{% url 'home' %}" title="Home"  class="material-icons"  style="color: rgba(47, 116, 219, 0.89);"> home </a>
+        <p><a href="{% url 'home' %}" title="Home" style="color: rgba(47, 116, 219, 0.89);"> Home </a> </p></li>
+
+        <li class="staff"><a href="{% url 'medicine' %}" title="Medicine"  class="material-icons" style="color: rgba(47, 116, 219, 0.89);"> medical_services </a> 
+        <p><a href="{% url 'medicine' %}" title="Medicine" style="color: rgba(47, 116, 219, 0.89);">Medicine </a></p></li>
+
+        <li class="staff"> <a href="{% url 'admin_control' %}" title="Control Panel"  class="material-icons"   style="color: rgba(47, 116, 219, 0.89);">medical_information </a> 
+        <p><a href="{% url 'admin_control' %}" title="Control Panel" style="color: rgba(47, 116, 219, 0.89);">Control Panel </a></li>
+         
+        <li class="staff"><a href="{% url 'profile' %}" title="{{user.email}}" class="material-icons"   style="color: rgba(47, 116, 219, 0.89);">account_circle </a> 
+        <p><a href="{% url 'profile' %}" title="{{user.email}}" style="color: rgba(47, 116, 219, 0.89);"> Profile </a></p></li>
+         
+        <li class="staff"><a href="{% url 'setting' %}"  class="material-icons"   style="color: rgba(47, 116, 219, 0.89);">settings </a> 
+        <p><a href="{% url 'setting' %}"  style="color: rgba(47, 116, 219, 0.89);"">Setting</a></p></li>
+         
+         <li class="staff"><a href="{% url 'lgOut' %}" class="material-icons"  style="color: rgba(47, 116, 219, 0.89);">logout</a> 
+         <p><a href="{% url 'lgOut' %}" title="LogOut"  style="color: rgba(47, 116, 219, 0.89);">Log Out </a></p></li>
+        
+         {% else %}
+
+        <li class="user"><a href="{% url 'home' %}" title="Home"  class="material-icons"  style="color: rgba(47, 116, 219, 0.89);"> home </a> 
+        <p> <a href="{% url 'home' %}" title="Home" style="color: rgba(47, 116, 219, 0.89);"> Home </a></p></li>
+        
+        <li class="user"><a href="{% url 'medicine' %}" title="Medicine"  class="material-icons" style="color: rgba(47, 116, 219, 0.89);"> medical_services </a> 
+        <p><a href="{% url 'medicine' %}" title="Medicine" style="color: rgba(47, 116, 219, 0.89);"> Medicine </a></p></li>
+        
+        <li class="user"> <a href="{% url 'cart_list' %}" title="About"  class="material-icons"  style="color: rgba(47, 116, 219, 0.89);"> shopping_cart </a> 
+        <p><a href="{% url 'cart_list' %}" title="Cart"  style="color: rgba(47, 116, 219, 0.89);"> Cart List </a></p></li>
+        
+        <li class="user"><a href="{% url 'profile' %}" title="{{user.email}}"  class="material-icons"  style="color: rgba(47, 116, 219, 0.89);"> account_circle </a> 
+        <p><a href="{% url 'profile' %}" title="{{user.email}}"  style="color: rgba(47, 116, 219, 0.89);"> Profile </a></p></li>
+        
+        <li class="user"><a href="{% url 'setting' %}"  class="material-icons"  style="color: rgba(47, 116, 219, 0.89);"> settings </a> 
+        <p><a href="{% url 'setting' %}"   style="color: rgba(47, 116, 219, 0.89);"> Setting </a></p></li>
+        
+        <li class="user"><a href="{% url 'lgOut' %}"  class="material-icons"  style="color: rgba(47, 116, 219, 0.89);"> logout </a> 
+        <p><a href="{% url 'lgOut' %}"   style="color: rgba(47, 116, 219, 0.89);" >Log Out </a></p></li>
+        {% endif %}   
+
+      </div>
+    </ul>
+  </nav>
+  <nav class="navbar "></nav>
+</br>

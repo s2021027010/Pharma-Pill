@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Option List</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'StorePharma/css/optionlist.css' %}">
+ 
+</head>
+<body>
+    <form action="{% url 'optionAdd' %}"  method="post"  enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1  class="titleBox"> Add Company / Type</h1>
+            <label><h3> Company Name</h3></label>
+            <div class="block"><input type="text" name="companyName" placeholder="Company Name" class="input-res"></div>
+            <label><h3> Medicine Type</h3></label>
+            <div class="block"><input type="text" name="medType" placeholder="Medicine Type" class="input-res"></div>
+            <input type="submit" class="btn" value="Add List">
+    </form>  
+</body>
+</html>

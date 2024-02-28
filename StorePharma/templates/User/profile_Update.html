@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--  home.html  22 Nov 2019 10:04:03 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Pharma Pill</title>
+    <meta name="keywords" content="HTML5 Template">
+    <meta name="description" content="Pharma Pill">
+    <meta name="author" content="p-themes"> 
+
+    <!-- Favicon   -->
+    {% load static %}  
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'StorePharma/icons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'StorePharma/icons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'StorePharma/icons/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'StorePharma/icons/site.html' %}">
+    <link rel="mask-icon" href="{% static 'StorePharma/icons/favicon.png' %}" color="#666666">
+    <link rel="shortcut icon" href="{% static 'StorePharma/icons/favicon.png' %}">
+    <meta name="msapplication-config" content="{% static 'StorePharma/icons/favicon.png' %}"> 
+
+    <link rel="font-awesome" href="{% static 'StorePharma/fonts/flaming/flaming-webfont.woff2' %}">
+    <link rel="font-awesome" href="{% static 'StorePharma/fonts/flaming/flaming-webfont.woff' %}">
+
+    <meta name="apple-mobile-web-app-title" content="Pharma Pill">
+    <meta name="application-name" content="Pharma Pill">
+    <meta name="msapplication-TileColor" content="#cc9966">
+    <meta name="theme-color" content="#ffffff">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'StorePharma/css/profile.css' %}">
+    <link rel="stylesheet" href="{% static 'StorePharma/css/admincontrol.css' %}">
+  </head>
+<body>
+ 
+ 
+    <form action="{% url 'update_Profile' %}"  method="post"  enctype="multipart/form-data" >
+        {% csrf_token %}  
+    <div class="profile-page">
+      <div class="content">
+        <div class="content__cover">
+           <img src="{{BASIC_DIR}}/Auth/media/{{Profile_view.db_photo}}" class="content__avatar" width="50px" height="50px">
+          <input type="file" accept="image/*" name="input_image"  class="updatefile ">
+          <div class="content__bull"><span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+        <div class="content__actions"><a href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+              <path fill="currentColor" d="M192 256A112 112 0 1 0 80 144a111.94 111.94 0 0 0 112 112zm76.8 32h-8.3a157.53 157.53 0 0 1-68.5 16c-24.6 0-47.6-6-68.5-16h-8.3A115.23 115.23 0 0 0 0 403.2V432a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48v-28.8A115.23 115.23 0 0 0 268.8 288z"></path>
+              <path fill="currentColor" d="M480 256a96 96 0 1 0-96-96 96 96 0 0 0 96 96zm48 32h-3.8c-13.9 4.8-28.6 8-44.2 8s-30.3-3.2-44.2-8H432c-20.4 0-39.2 5.9-55.7 15.4 24.4 26.3 39.7 61.2 39.7 99.8v38.4c0 2.2-.5 4.3-.6 6.4H592a48 48 0 0 0 48-48 111.94 111.94 0 0 0-112-112z"></path>
+            </svg><span>Connect</span></a><a href="#">
+              
+             <b><a  class="material-icons"  style="color: red; background-color: white; &:hover{background-color: rgb(201, 199, 199);}" id="close">close  </a></b>
+            </div>
+        <div class="content__title">
+          <h1><input type="text" class="updateTxt" name="input_fname" value="{{user.first_name}}">
+            <input type="text"  class="updateTxt"  name="input_lname" value="{{user.last_name}}"> 
+        </h1><span> 
+            <input type="text"  class="updateTxt"  name="input_email" value="{{user.email}}" readonly> 
+        </span>
+        </div>
+        <div class="content__description">
+           <p>
+            <select id="options"  name="input_gender"  class="updateTxt content__description custom-select" required>
+                <option  name="input_gender"  value="{{Profile_view.db_gender}}" disabled selected>Select Gender</option>
+                <option  name="input_gender" value="Male">Male</option>
+                <option  name="input_gender" value="Female">Female</option>
+                <option  name="input_gender" value="Other">Other</option>
+            </select> 
+        </p>
+          <p> <input type="text" class="updateTxt" name="input_address" value="{{Profile_view.db_address}}"> 
+            <input type="text" class="updateTxt" name="input_address_Country" value="{{Profile_view.db_address_Country}}"> </p>
+        
+        </div>
+        <ul class="content__list">
+          <li><span><input type="date" value="2024-01-01" class="updateTxt"  name="input_DoB" value="{{Profile_view.db_date_DoB}}"> </span>Date of Birth</li>
+          <li><span><input type="text"  class="updateTxt"  name="input_PhNumber" value="{{Profile_view.db_phoneNumber}}"> </span>Contact</li> 
+        </ul>
+        <div class="content__button"><a class="button" >
+            <div class="button__border"></div>
+            <div class="button__bg"></div>
+            <button type="submit" class="button__text" style="background-color: transparent; border: transparent;"  id="show">Update Save</button> </div>
+      </div>
+      <div class="bg"  id="close" >
+        <div id="close"><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+       
+    </div>
+</form> 
+ 
+  
+<script src="{% static 'StorePharma/js/profile.js' %}"></script>
+ 
+
+</body>
+
+</html>

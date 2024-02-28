@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--  home.html  22 Nov 2019 10:04:03 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - Pharma Pill</title>
+    <meta name="keywords" content="HTML5 Template">
+    <meta name="description" content="Pharma Pill">
+    <meta name="author" content="p-themes"> 
+
+    <!-- Favicon   -->
+    {% load static %}  
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'StorePharma/icons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'StorePharma/icons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'StorePharma/icons/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'StorePharma/icons/site.html' %}">
+    <link rel="mask-icon" href="{% static 'StorePharma/icons/favicon.png' %}" color="#666666">
+    <link rel="shortcut icon" href="{% static 'StorePharma/icons/favicon.png' %}">
+    <meta name="msapplication-config" content="{% static 'StorePharma/icons/favicon.png' %}"> 
+
+    <link rel="font-awesome" href="{% static 'StorePharma/fonts/flaming/flaming-webfont.woff2' %}">
+    <link rel="font-awesome" href="{% static 'StorePharma/fonts/flaming/flaming-webfont.woff' %}">
+
+    <meta name="apple-mobile-web-app-title" content="Pharma Pill">
+    <meta name="application-name" content="Pharma Pill">
+    <meta name="msapplication-TileColor" content="#cc9966">
+    <meta name="theme-color" content="#ffffff">
+
+  </head>
+    
+  <style>
+    .col-4:nth-child(1) { 
+        flex-wrap: nowrap;
+        float: inline-start;
+        flex-direction: initial;
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        gap: 5px; 
+      }
+      .col-6:nth-child(1) { 
+        flex-wrap: nowrap;
+        float: inline-start;
+        flex-direction: initial;
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        gap: 5px; 
+      }
+      .row .col:after {
+        content: "";
+        display:table;
+        clear: both;
+      }
+       
+  </style>
+  <link rel="stylesheet" href="{% static 'StorePharma/css/cartlist.css' %}">
+  <link rel="stylesheet" href="{% static 'StorePharma/css/admincontrol.css' %}">
+<body>
+  {% load custom_tag %}
+    {% include 'Menu/header.html' %}    
+    <section id="services" class="services">
+      <h1 class="title">Medicine Buy here</h1>
+      {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+          <h2>
+            <li {% if message.tags %} style="color: rgb(230, 6, 6);" class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+          </h2>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    <form action="{% url 'bill_report' %}" method="post" enctype="multipart/form-data"> 
+      {% csrf_token %} 
+       
+    {% for show_med in show_medicine %}
+    {% for show_cart in mycart %}
+    {% if show_cart.med_Cart_ID == show_med.Medicine_ID %} 
+    <div class="row"> 
+      <div class="col-4"> 
+      <table class="table widget-26">
+        <tbody class="card-margin card">
+          <tr>
+            <td>
+              <div class="widget-26-job-emp-img">
+                <img src="{{BASIC_DIR}}/Auth/media/{{show_med.Med_photo}}" alt="Company" />
+                </div>
+            </td>
+            <td>
+              <div class="widget-26-job-title">
+                <a >{{show_med.Med_LabelName}} </a><span class="employer-name">({{show_med.Med_Size}})</span>
+                <p class="m-0"><a class="employer-name">Rs.{{show_med.Med_Sell_Price}} -/per </a></p>
+                <p  class="m-0">Total Price : Rs.{{show_cart.Pk_Cart_ID|email:user.email}}</p> 
+              </div>
+            </td>
+            <td>
+              <div class="widget-26-job-info"> 
+                  <p class="type m-0">Quantity : {{show_cart.Med_Cart_Quantity}}</p>            
+              </div>
+            </td>  
+            <td> 
+              
+              {% if show_cart.Med_Cart_Quantity <= show_med.Med_Remain_Quantity %}
+                <div class="checkbox-wrapper-13">  
+                  <input  type="checkbox" value="{{show_cart.Pk_Cart_ID}}"  name="Med_list" > 
+                </div> 
+              {% else %}
+              <span style="color: red; font-size: small; font-weight: 300;">Only Available : {{show_med.Med_Remain_Quantity}}</span>
+              {% endif %}
+            </td>
+          </tr> 
+        </tbody>
+      </table>
+      </div>  
+        <div class="col-6">              
+      {% endif %}
+     
+      {% endfor %}
+    </div> 
+    {% endfor %}
+    </div>
+ 
+
+  <div  style="text-align: center; justify-self: center;"> 
+  <button type="submit"  class="btn">Buy</a>
+  </div>
+ 
+</form>
+
+    </section>
+
+  {% include 'Menu/footer.html' %}
+
+</body>
+
+
+
+</html>

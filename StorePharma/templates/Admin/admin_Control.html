@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--  admin_Control.html  22 Nov 2019 10:04:03 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Control - Pharma Pill</title>
+    <meta name="keywords" content="HTML5 Template">
+    <meta name="description" content="Pharma Pill">
+    <meta name="author" content="p-themes"> 
+
+    <!-- Favicon   -->
+    {% load static %}  
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'StorePharma/icons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'StorePharma/icons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'StorePharma/icons/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'StorePharma/icons/site.html' %}">
+    <link rel="mask-icon" href="{% static 'StorePharma/icons/favicon.png' %}" color="#666666">
+    <link rel="shortcut icon" href="{% static 'StorePharma/icons/favicon.png' %}">
+    <meta name="msapplication-config" content="{% static 'StorePharma/icons/favicon.png' %}"> 
+
+    <link rel="font-awesome" href="{% static 'StorePharma/fonts/flaming/flaming-webfont.woff2' %}">
+    <link rel="font-awesome" href="{% static 'StorePharma/fonts/flaming/flaming-webfont.woff' %}">
+
+    <meta name="apple-mobile-web-app-title" content="Pharma Pill">
+    <meta name="application-name" content="Pharma Pill">
+    <meta name="msapplication-TileColor" content="#cc9966">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="{% static 'StorePharma/css/cartlist.css' %}">
+    <link rel="stylesheet" href="{% static 'StorePharma/css/admincontrol.css' %}">
+    <link rel="stylesheet" href="{% static 'StorePharma/css/boot.min.css' %}"> 
+
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="{% static 'StorePharma/css/tailwind.min.css' %}"> 
+  </head>
+  
+<body>
+    {% include 'Menu/header.html' %}    
+</br>  </br> </br></br> 
+<section id="services" class="services"> 
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <h2>
+          <li {% if message.tags %} style="color: rgb(230, 6, 6);" class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        </h2>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  <div class="center hideform boxed wrapperY"  >
+    <div class="addfade wrapperY">
+      <button id="close" style="float: right;"><p class="material-icons"  style="color: rgba(230, 6, 6);">close</p> </button>
+          <div class="container">
+            {% include 'Admin/add_Medicine.html' %}
+          </div>
+      </form>
+  </div>
+</div>
+
+<!--  ******************         * Type/Company *      ******************* -->
+<div class="centerType hideform boxed wrapperY"  >
+  <div class="addfade wrapperY">
+    <button id="closeType" style="float: right;"><p class="material-icons"  style="color: rgba(230, 6, 6);">close</p> </button>
+      <div class="container">
+        {% include 'Admin/add_List.html' %}
+      </div>
+    </form>
+</div>
+</div> 
+ 
+<br>  
+{% include 'Admin/dashboard.html' %}
+
+
+
+
+ 
+</section> 
+  {% include 'Menu/footer.html' %}
+  
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+    
+    function myFunction() {
+      var searchby;
+      searchby =  document.getElementById("byInput").value;
+      var inputID, filterID, tableID, trID, tdID, iID, jID, txtValueID; 
+      inputID = document.getElementById("myInput");
+      filterID = inputID.value.toUpperCase();
+      tableID = document.getElementById("myTable");
+      trID = tableID.getElementsByTagName("tr");
+      for (iID = 0; iID < trID.length; iID++) { 
+        tdID = trID[iID].getElementsByTagName("td")[searchby]; 
+        if (tdID) {
+          txtValueID = tdID.textContent || tdID.innerText;
+          if (txtValueID.toUpperCase().indexOf(filterID) > -1) {
+            trID[iID].style.display = "";
+          } else {
+            trID[iID].style.display = "none";
+          }
+        } 
+    }
+       
+    }  
+  function CheckStatusType(val){
+    var element=document.getElementById('orderStatus');
+    if(val=='pick a status'||val=='others')
+      element.style.display='block';
+    else  
+      element.style.display='none';
+   }
+    
+  
+  $('#show').on('click', function () {
+      $('.center').show();
+      $(this).hide();
+  })
+  $('#close').on('click', function () {
+      $('.center').hide();
+      $('#show').show();
+  }) 
+  
+  
+  $('#showType').on('click', function () {
+      $('.centerType').show();
+      $(this).hide();
+  })
+  $('#closeType').on('click', function () {
+      $('.centerType').hide();
+      $('#showType').show();
+  }) 
+ 
+</script>
+<script>
+  /*Toggle dropdown list*/
+  function toggleDD(myDropMenu) {
+      document.getElementById(myDropMenu).classList.toggle("invisible");
+  }
+  /*Filter dropdown options*/
+  function filterDD(myDropMenu, myDropMenuSearch) {
+      var input, filter, ul, li, a, i;
+      input = document.getElementById(myDropMenuSearch);
+      filter = input.value.toUpperCase();
+      div = document.getElementById(myDropMenu);
+      a = div.getElementsByTagName("a");
+      for (i = 0; i < a.length; i++) {
+          if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+              a[i].style.display = "";
+          } else {
+              a[i].style.display = "none";
+          }
+      }
+  }
+  // Close the dropdown menu if the user clicks outside of it
+  window.onclick = function(event) {
+      if (!event.target.matches('.drop-button') && !event.target.matches('.drop-search')) {
+          var dropdowns = document.getElementsByClassName("dropdownlist");
+          for (var i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (!openDropdown.classList.contains('invisible')) {
+                  openDropdown.classList.add('invisible');
+              }
+          }
+      }
+  }
+</script>
+ 
+ 
+</html>

@@ -1,0 +1,108 @@
+{% load static %}
+    <link rel="stylesheet" href="{% static 'StorePharma/css/fullView.css' %}"> 
+
+
+ 
+    <article class="card">
+      <div class="left-card">
+        <img class="poster-img1" src="{{BASIC_DIR}}/Auth/media/{{show_med.Med_photo}}" alt="poster image 1" />
+        {% for show_img in med_image %}
+        {% if show_med.Medicine_ID == show_img.Med_ID_Img %}
+        <div class="row">
+          <div class="col-25">
+            <a href="{{BASIC_DIR}}/Auth/media/{{show_img.list1_img}}" id="1"> 
+            <img class="poster-img2" src="{{BASIC_DIR}}/Auth/media/{{show_img.list1_img}}" alt="poster image 2" /> </a>
+          </div>
+          <div class="col-25">
+            <a href="{{BASIC_DIR}}/Auth/media/{{show_img.list2_img}}" id="2"> 
+            <img class="poster-img2" src="{{BASIC_DIR}}/Auth/media/{{show_img.list2_img}}" alt="poster image 2" /></a>
+          </div>
+          <div class="col-25"> 
+            <a href="{{BASIC_DIR}}/Auth/media/{{show_img.list3_img}}" id="3"> 
+            <img class="poster-img2" src="{{BASIC_DIR}}/Auth/media/{{show_img.list3_img}}" alt="poster image 2"  /></a>
+          </div>
+          <div class="col-25"> 
+            <a href="{{BASIC_DIR}}/Auth/media/{{show_img.list4_img}}" id="4"> 
+            <img class="poster-img2" src="{{BASIC_DIR}}/Auth/media/{{show_img.list4_img}}"  alt="poster image 2"  /></a>
+          </div>
+        </div>
+         
+        {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="right-card">
+        <h2 class="item-name"> 
+          {% for list in obj_Option %}
+           {% if list.Option_ID == show_med.Med_Type %}
+            {{list.type_List}}
+           {% endif %}
+        {% endfor %}
+        </h2>
+        <h1 class="main-title">{{show_med.Med_LabelName}} <span style="font-size: small;"> ({{show_med.Med_Size}}) </span></h1> 
+        <div class="price">
+          <p class="current-price">Rs. {{show_med.Med_Sell_Price}} <span style="font-size: small;"> -/each</span></p>
+          <p class="old-price" style="color: red; ">(<s>10%</s> -off)</p>
+        </div> 
+         <div class=" current-menufact">
+          <span style="font: bold;"> Status Check </span> : <span style=" color: #6c7289;"> &nbsp {{show_med.Med_Status}}</span> 
+         </div>
+        <div class=" current-menufact">
+         <span style="font: bold;"> Formula Name </span> : <span style=" color: #6c7289;"> &nbsp {{show_med.Med_FormulaName}}</span> 
+        </div>
+        <div class="price current-menufact">
+          <span style="font: bold;"> Menufacture By :</span> <span style=" color: #6c7289;">&nbsp 
+            {% for list in obj_Option %}
+           {% if list.Option_ID == show_med.Med_CompanyName %}
+            {{list.company_List}}
+           {% endif %}
+        {% endfor %}
+          </span> 
+        </div>
+        <span style="font: bold;" class="current-menufact"> Description:</span>
+        <textarea class="summary current-menufact" readonly>
+          &nbsp {{show_med.Med_Describtion}}
+        </textarea>
+        <span style="font: bold;" class="current-menufact"> Used For Patient:</span>
+        <textarea class="summary current-menufact" readonly>
+          &nbsp {{show_med.Med_UsedFor}}
+        </textarea>
+
+        <div class="price current-date">
+          <span style="font: bold;"> Expire Date : </span> <span style=" color: #6c7289;"> &nbsp {{show_med.Med_ExpireDate}}</span> 
+        </div>
+        <div class="price current-date">
+          <span style="font: bold;"> Production Date : </span> <span style=" color: #6c7289;">  &nbsp {{show_med.Med_ProductionDate}}</span> 
+        </div>
+
+        <br>
+        <div class="centerCart{{show_med.Medicine_ID}} hideform boxed wrapperY"  >
+          <div class="addfade wrapperY">
+            <button id="closeCart{{show_med.Medicine_ID}}" style="float: right;"><p class="material-icons"  style="color: rgba(230, 6, 6);">close</p> </button>
+            <div class="container">
+              {% include 'User/postCart.html' %}
+            </div>
+            </form>
+        </div>
+      </div>
+         
+        <button id="showCart{{show_med.Medicine_ID}}" class="btn">
+          Add to Cart
+        </button> 
+      </div>
+    </article>
+<script>
+  
+  $('#showCart{{show_med.Medicine_ID}}').on('click', function () {
+      $('.centerCart{{show_med.Medicine_ID}}').show();
+      $(this).hide();
+  })
+  $('#closeCart{{show_med.Medicine_ID}}').on('click', function () {
+      $('.centerCart{{show_med.Medicine_ID}}').hide();
+      $('#showCart{{show_med.Medicine_ID}}').show();
+  }) 
+</script>
+   
+
+<script src="{% static 'StorePharma/js/fullView.js' %}"></script> 
+ 

@@ -1,0 +1,49 @@
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'StorePharma/css/fullView.css' %}"> 
+    
+<form id="post-cart_{{show_med.Medicine_ID}}"  method="post"  enctype="multipart/form-data">
+    {% csrf_token %}  
+    <h2 class="titleBox"> Add Cart "<input id="input_cart_ID"   name="input_cart_ID"   class="fit-content" value="{{show_med.Medicine_ID}}" style="color: red; background-color: transparent;" name="id_get" value="" readonly>" </h2>
+    {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <h2>
+          <li {% if message.tags %} style="color: rgb(230, 6, 6);" class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        </h2>
+      {% endfor %}
+    </ul>
+  {% endif %}
+    {% if show_med.Med_Remain_Quantity >= 1 %}
+    <div class="row">
+        <div class="col-25">
+          <label for="medQuantity">Medicine Quantity</label>
+        </div>
+        <div class="col-75">
+          <input type="number"  value="{{show_med.Med_Remain_Quantity}}"  id="medQuantity" name="medQuantity" title="Medicine Buy Quantity" placeholder="Medicine Buying Quantity" >
+        </div>
+      </div>
+      <button  class="btn">
+        Add to Cart
+      </button>
+      {% else %}
+      <span style="color: red; font-size: medium; font-weight: 300;">Not Available</span>
+      <input type="number" value="0"  id="medQuantity" name="medQuantity" title="Medicine Box" placeholder="Medicine Box" readonly>
+      {% endif %} 
+ 
+</form>
+
+<script text="text/javascript">
+    $(document).on('submit', "#post-cart_{{show_med.Medicine_ID}}" , function(e){
+        e.preventDefault();
+        var dataString_cart = $("#post-cart_{{show_med.Medicine_ID}}").serialize();
+        $.ajax({
+            type: 'post',
+            url : "{% url 'cart_list' %}",
+            data: dataString_cart,
+            success: function(html){
+                                    location.reload();
+                                }
+        });});
+        
+ </script>

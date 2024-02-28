@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--  setting.html  22 Nov 2019 10:04:03 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setting - Pharma Pill</title>
+    <meta name="keywords" content="HTML5 Template">
+    <meta name="description" content="Pharma Pill">
+    <meta name="author" content="p-themes"> 
+
+    <!-- Favicon   -->
+    {% load static %}  
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'StorePharma/icons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'StorePharma/icons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'StorePharma/icons/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'StorePharma/icons/site.html' %}">
+    <link rel="mask-icon" href="{% static 'StorePharma/icons/favicon.png' %}" color="#666666">
+    <link rel="shortcut icon" href="{% static 'StorePharma/icons/favicon.png' %}">
+    <meta name="msapplication-config" content="{% static 'StorePharma/icons/favicon.png' %}"> 
+
+    <link rel="font-awesome" href="{% static 'StorePharma/fonts/flaming/flaming-webfont.woff2' %}">
+    <link rel="font-awesome" href="{% static 'StorePharma/fonts/flaming/flaming-webfont.woff' %}">
+
+    <meta name="apple-mobile-web-app-title" content="Pharma Pill">
+    <meta name="application-name" content="Pharma Pill">
+    <meta name="msapplication-TileColor" content="#cc9966">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="{% static 'StorePharma/css/admincontrol.css' %}"> 
+    <link rel="stylesheet" href="{% static 'StorePharma/css/boot.min.css' %}">
+  </head>
+<body>
+ 
+    {% include 'Menu/header.html' %}   
+ <br>
+<section id="services" class="services">
+  
+  {% if user.is_staff %} 
+  <h1 class="heading"> Set <span style="color: rgb(230, 6, 6);"> Opening Time </span></h1>
+  {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <h2> <li {% if message.tags %} style="color: rgb(230, 6, 6);" class="{{ message.tags }}"{% endif %}>{{ message }}</li> </h2>
+    {% endfor %}
+  </ul>
+  <!--    {% include 'Admin/timeSet.html' %}   -->
+    {% endif %} 
+ 
+      {% if not timeSet %} 
+        {% include 'Admin/timeSet.html' %}
+      {% else %}
+          {% for time in timeSet  %}  
+          {% if forloop.counter == forloop.last %} 
+            {% include 'Admin/timeSet.html' %}
+            {% else %}  
+            <h1 class="heading"> Update Time <span style="color: rgb(230, 6, 6);"> {{forloop.counter}} </span></h1>
+            {% include 'Admin/update_timeSet.html' %}
+            {% endif %}
+          {% endfor %}
+      {% endif %}
+      {% if not obj_about %}
+        {% include 'Admin/add_about.html' %}  
+      {% else %}
+      {% for about in obj_about %} 
+        {% include 'Admin/add_about.html' %}
+        {% endfor %}
+      {% endif %}
+
+      {% include 'Admin/Add_blog.html' %} 
+      <!--            user  start   -->
+      {% else %}
+      {% include 'User/changePassword.html' %}
+      {% endif %}
+  </div>
+      
+
+</section>
+
+  {% include 'Menu/footer.html' %}
+</body>
+
+<script>
+  
+  function CheckDateFrom(val){
+    var element=document.getElementById('input_DateFrom');
+    if(val=='pick a status'||val=='others')
+      element.style.display='block';
+    else  
+      element.style.display='none';
+   }
+</script>
+
+</html>

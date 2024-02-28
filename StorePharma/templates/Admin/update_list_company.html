@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update List</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'StorePharma/css/optionlist.css' %}">
+ 
+</head>
+<body>
+    <form action="{% url 'update_list_company' %}"  method="post"  enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1  class="titleBox"> Update Company "<input id="id_Img" class="fit-content" style="color: red; background-color: transparent;" name="id_Img" value="{{show_med.Medicine_ID}}" readonly>" </h1>
+            <label><h3> Company Name</h3></label>
+            <div class="block"> 
+                {% for list in obj_Option %}
+                {% if list.Option_ID == show_med.Med_CompanyName %} 
+                <input type="text"  class="input-res" value="{{list.company_List}}" name="companyName"  id="companyName"  /> 
+                <input type="text" name="company_ID" value="{{show_med.Med_CompanyName}}" hidden>
+                {% endif %}
+                {% endfor %}
+                 
+            </div>
+             
+            <input type="submit" class="btn" value="Update List">
+    </form>  
+</body>
+</html>

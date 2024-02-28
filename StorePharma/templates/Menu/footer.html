@@ -1,0 +1,55 @@
+
+<body> 
+
+   
+      <section class="footer">
+        <div class="credit">
+          </div>
+      
+        <div class="box-container">
+           
+      <!--     start column -->
+          <div class="box">
+            <h3>Email</h3>
+            {% for about in obj_about %}
+            <a href="mailto:{{about.about_admin_email}}?subject = PharmaPill&body = {{about.about_address}}" class="link" title="Click me to Email">{{about.about_admin_email}}</a>
+            <p><a href="tel:{{about.about_contact}}" title="Click me to Contact">{{about.about_contact}}</a></p>
+            <p><a href="https://www.google.com/maps/dir//{{about.about_address}}" title="Click me to link address">{{about.about_address}}</a></p>
+            {% endfor %}
+          </div>
+          
+      <!--     end column -->
+          
+      <!--     start column -->
+          <div class="box">
+            <h3>Opening hours</h3>
+            {% for time in timeSet %}
+              <p>{{time.DateFrom}}-
+                {% if time.DateTo != "N/A" %}
+                {{time.DateTo}} 
+                {% endif %}
+                :: {{time.TimeFromHour}}:{{time.TimeFromMin}} - {{time.TimeToHour}}:{{time.TimeToMin}}<br></p>
+            {% endfor %}
+          </div>
+      <!--     end column -->   
+          
+        </div>
+        
+        <div class="credit">
+            made with <i class="fas fa-heart"></i> by <span>Arshad Ali</span> | all rights reserved &copy;2024/Jan
+          </div>
+        
+      </section>
+      
+      <!-- end footer --> 
+    </header>
+    <!-- Plugins JS File -->
+    {% load static %} 
+    <script src="{% static 'StorePharma/js/home.js' %}"></script> 
+    <script src="{% static 'StorePharma/js/control.js' %}"></script>
+ 
+</body>
+
+
+
+</html>

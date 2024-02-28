@@ -1,0 +1,162 @@
+{% load custom_tag %}
+<div class="main-content flex-1 bg-gray-100 mt-12 md:mt-2 pb-24 md:pb-5">
+    <div class="container" style="background-color: rgba(170, 168, 168, 0.905);">
+        <div class="row">  
+            <div class="col-sm-4">  
+            <h1 style="font-size: large;">Staff <span style="color: rgb(230, 6, 6);"> Dashboard </span></h1>
+            </div>
+                <div class="col-sm-8">  
+                    <div class="btnNewAdd"> 
+                        <a href="{% url 'cart_list' %}"> <button href="{% url 'cart_list' %}" id="Medicine" class="btnAddNew"><p class="material-icons"  style="color: rgba(246, 248, 252, 0.89);">shopping_cart</p>Cart List </button></a>
+                        <a href="{% url 'medicine_order' %}"> <button href="{% url 'medicine_order' %}" id="Medicine" class="btnAddNew"><p class="material-icons"  style="color: rgba(246, 248, 252, 0.89);">preview</p>Medicine Order </button></a>
+                        <a href="{% url 'admin_dataTable' %}"> <button href="{% url 'admin_dataTable' %}" id="Medicine" class="btnAddNew"><p class="material-icons"  style="color: rgba(246, 248, 252, 0.89);">preview</p>Show Medicine </button></a>
+                        <button id="showType" class="btnAddNew"><p class="material-icons"  style="color: rgba(246, 248, 252, 0.89);">edit</p>Add Type/Company </button>
+                        <button id="show" class="btnAddNew"><p class="material-icons"  style="color: rgba(246, 248, 252, 0.89);">edit</p>Add Medicine</button>
+                    </div>
+                </div>
+        </div>
+       
+    </div>
+<div class="container" style="background-color: rgba(212, 208, 208, 0.364);"> 
+  <div class="flex flex-wrap">
+     
+    <div class="w-full md:w-1/2 xl:w-1/3 p-6">
+        <!--Metric Card-->
+        <div class="bg-gradient-to-b from-gray-300 to-gray-200 border-b-4 border-gary-500 rounded-lg shadow-xl p-5">
+            <div class="flex flex-row items-center">
+                <div class="flex-shrink pr-4">
+                    <div class="rounded-full p-5 bg-indigo-600"><i class="fas fa-money-bill  fa-2x fa-inverse"></i> </div>
+                </div>
+                <div class="flex-1 text-right md:text-center">
+                    <h5 class="font-bold uppercase text-gray-800">Total Amount</h5>
+                    <h3 class="font-bold  text-gray-800 text-3xl">{{contxt_obj_User|total_Amount_count}} <span class="text-indigo-500"><i class="fas fa-arrow-up"></i></span></h3>
+                </div>
+            </div>
+        </div>
+        <!--/Metric Card-->
+    </div>
+      <div class="w-full md:w-1/2 xl:w-1/3 p-6">
+          <!--Metric Card-->
+          <div class="bg-gradient-to-b from-green-200 to-green-100 border-b-4 border-green-600 rounded-lg shadow-xl p-5">
+              <div class="flex flex-row items-center">
+                  <div class="flex-shrink pr-4">
+                      <div class="rounded-full p-5 bg-green-600"><i class="fa fa-wallet fa-2x fa-inverse"></i></div>
+                  </div>
+                  <div class="flex-1 text-right md:text-center">
+                      <h5 class="font-bold uppercase text-gray-600">Total Revenue</h5>
+                      <h3 class="font-bold text-3xl">Rs.{{contxt_obj_User|totalEarn_count}} <span class="text-green-500"><i class="fas fa-caret-up"></i></span></h3>
+                  </div>
+              </div>
+          </div>
+          <!--/Metric Card-->
+      </div>
+      <div class="w-full md:w-1/2 xl:w-1/3 p-6">
+          <!--Metric Card-->
+          <div class="bg-gradient-to-b from-pink-200 to-pink-100 border-b-4 border-pink-500 rounded-lg shadow-xl p-5">
+              <div class="flex flex-row items-center">
+                  <div class="flex-shrink pr-4">
+                      <div class="rounded-full p-5 bg-pink-600"><i class="fas fa-users fa-2x fa-inverse"></i></div>
+                  </div>
+                  <div class="flex-1 text-right md:text-center">
+                      <h5 class="font-bold uppercase text-gray-600">Total Users</h5>
+                      <h3 class="font-bold text-3xl">{{contxt_obj_User|totalUser_count}} <span class="text-pink-500"><i class="fas fa-exchange-alt"></i></span></h3>
+                  </div>
+              </div>
+          </div>
+          <!--/Metric Card-->
+      </div>
+      <div class="w-full md:w-1/2 xl:w-1/3 p-6">
+          <!--Metric Card-->
+          <div class="bg-gradient-to-b from-yellow-50 to-yellow-300 border-b-4 border-yellow-600 rounded-lg shadow-xl p-5">
+              <div class="flex flex-row items-center">
+                  <div class="flex-shrink pr-4">
+                      <div class="rounded-full p-5 bg-yellow-600"><i class="fas fa-user-plus fa-2x fa-inverse"></i></div>
+                  </div>
+                  <div class="flex-1 text-right md:text-center">
+                      <h5 class="font-bold uppercase text-gray-600">Activate Users</h5>
+                      <h3 class="font-bold text-3xl">{{contxt_obj_User|ActiveUser_count}} <span class="text-yellow-600"><i class="fas fa-caret-up"></i></span></h3>
+                  </div>
+              </div>
+          </div>
+          <!--/Metric Card-->
+      </div>
+     
+    <div class="w-full md:w-1/2 xl:w-1/3 p-6">
+        <!--Metric Card-->
+        <div class="bg-gradient-to-b from-red-100 to-red-400 border-b-4 border-red-600 rounded-lg shadow-xl p-5">
+            <div class="flex flex-row items-center">
+                <div class="flex-shrink pr-4">
+                    <div class="rounded-full p-5 bg-red-600"><i class="fa fa-database fa-2x fa-inverse"></i></div>
+                </div>
+                <div class="flex-1 text-right md:text-center">
+                    <h5 class="font-bold uppercase text-gray-600">Total Item</h5>
+                    <h3 class="font-bold text-3xl">{{contxt_obj_User|total_item_count}} <span class="text-green-500"><i class="fas fa-caret-up"></i></span></h3>
+                </div>
+            </div>
+        </div>
+        <!--/Metric Card-->
+    </div>
+    <div class="w-full md:w-1/2 xl:w-1/3 p-6">
+        <!--Metric Card-->
+        <div class="bg-gradient-to-b from-pink-100 to-pink-400 border-b-4 border-pink-500 rounded-lg shadow-xl p-5">
+            <div class="flex flex-row items-center">
+                <div class="flex-shrink pr-4">
+                    <div class="rounded-full p-5 bg-pink-600"><i class="fas fa-file-excel fa-2x fa-inverse"></i></div>
+                </div>
+                <div class="flex-1 text-right md:text-center">
+                    <h5 class="font-bold uppercase text-gray-600">Order Cancel</h5>
+                    <h3 class="font-bold text-3xl">{{contxt_Med_Order|orderCancel_count}} <span class="text-pink-500"><i class="fas fa-ban"></i></span></h3>
+                </div>
+            </div>
+        </div>
+        <!--/Metric Card-->
+    </div>
+
+      <div class="w-full md:w-1/2 xl:w-1/3 p-6">
+          <!--Metric Card-->
+          <div class="bg-gradient-to-b from-blue-200 to-blue-100 border-b-4 border-blue-500 rounded-lg shadow-xl p-5">
+              <div class="flex flex-row items-center">
+                  <div class="flex-shrink pr-4">
+                      <div class="rounded-full p-5 bg-blue-600"><i class="fas fa-server fa-2x fa-inverse"></i></div>
+                  </div>
+                  <div class="flex-1 text-right md:text-center">
+                      <h5 class="font-bold uppercase text-gray-600">Order Completed</h5>
+                      <h3 class="font-bold text-3xl">{{contxt_Med_Order|orderPassed_count}} <span class="text-blue-500"><i class="fas fa-check-double"></i></span></h3>
+                  </div>
+              </div>
+          </div>
+          <!--/Metric Card-->
+      </div>
+      <div class="w-full md:w-1/2 xl:w-1/3 p-6">
+          <!--Metric Card-->
+          <div class="bg-gradient-to-b from-indigo-200 to-indigo-100 border-b-4 border-indigo-500 rounded-lg shadow-xl p-5">
+              <div class="flex flex-row items-center">
+                  <div class="flex-shrink pr-4">
+                      <div class="rounded-full p-5 bg-indigo-600"><i class="fas fa-tasks fa-2x fa-inverse"></i></div>
+                  </div>
+                  <div class="flex-1 text-right md:text-center">
+                      <h5 class="font-bold uppercase text-gray-600">Order Pendding</h5>
+                      <h3 class="font-bold text-3xl">{{contxt_Med_Order|orderPending_count}} <span class="text-indigo-500"><i class="fas fa-hourglass-half"></i></span></h3>
+                  </div>
+              </div>
+          </div>
+          <!--/Metric Card-->
+      </div>
+      <div class="w-full md:w-1/2 xl:w-1/3 p-6">
+          <!--Metric Card-->
+          <div class="bg-gradient-to-b from-red-200 to-red-100 border-b-4 border-red-500 rounded-lg shadow-xl p-5">
+              <div class="flex flex-row items-center">
+                  <div class="flex-shrink pr-4">
+                      <div class="rounded-full p-5 bg-red-600"><i class="fas fa-inbox fa-2x fa-inverse"></i></div>
+                  </div>
+                  <div class="flex-1 text-right md:text-center">
+                      <h5 class="font-bold uppercase text-gray-600">Order Waiting</h5>
+                      <h3 class="font-bold text-3xl">{{contxt_Med_Order|orderWaiting_count}} <span class="text-red-500"><i class="fas fa-caret-up"></i></span></h3>
+                  </div>
+              </div>
+          </div>
+          <!--/Metric Card-->
+      </div>
+  </div>
+  </div>
+</div> 

@@ -1,0 +1,248 @@
+  
+    {% load static %}   
+    <head> 
+        
+      
+      <style>
+        .col-4:nth-child(1) { 
+            flex-wrap: nowrap;
+            float: inline-start;
+            flex-direction: initial;
+            display: table;
+            grid-template-columns: auto auto auto auto;
+            gap: 50px;  
+            width: 75mm;
+            height: auto;
+          }
+          .col-6:nth-child(1) { 
+            flex-wrap: nowrap;
+            float: inline-start;
+            flex-direction: initial;
+            display: table;
+            grid-template-columns: auto auto auto auto;
+            gap: 50px;  
+            width: 75mm;
+            height: auto;
+          }
+          .row:after { 
+            clear: both;
+          }
+          .container {
+        display: block;
+        flex-wrap: wrap;
+        gap: 5px;
+        container-type: inline-size;
+        resize: vertical;
+        overflow: none;
+      }
+      
+           
+      </style>
+      </head>
+      
+      <link rel="stylesheet" href="{% static 'StorePharma/css/boot.css' %}">  
+      {% load custom_tag %}
+    <body>
+      <div class="container" style="justify-content: center;">
+         {% for order in order_Med %}  
+         {% if order.Pk_order_ID == ordered.Pk_order_ID %}
+          <div class="row">
+            <div class="col-4"> 
+      <div id="POS{{order.Pk_order_ID}}" style="max-width: 75mm;">  
+          <!--       <center> start center  -->
+        <div id="invoice-POS" class="invoice-POS" name="invoice-POS"> 
+           <label id="top"  class="info_top"> 
+            <div class="info"> 
+              <h2><span style="color: rgb(5, 119, 233);  font: bold;"> Pharma &nbsp;</span><span style="color: rgb(204, 34, 159);  font: bold;">  Pill &nbsp;  </span>  </p></h2>
+            {% if user.is_staff and order.order_email == user.email %}
+            {% for about in obj_about %}
+            <a href="https://www.google.com/maps/dir//{{about.about_address}}">
+              <p><input class="td txtstylo" value="{{about.about_address}}" style="max-width: 250px;min-width: 250px; ; color: rgba(0,0,0,0.6) ; outline: none; border: none none;  border-color: transparent transparent;" readonly></p> 
+             </a>
+            {% endfor %}
+            {% else %}
+              {% for profile in obj_profile  %}
+            {% if ordered.order_email == profile.char_email %}
+            <a href="https://www.google.com/maps/dir//{{profile.db_address}},{{profile.db_address_Country}}">
+              <p><input class="td txtstylo" value="{{profile.db_address}}" style="max-width: 250px;min-width: 250px; ; color: rgba(0,0,0,0.6) ; outline: none; border: none none;  border-color: transparent transparent;" readonly></p> 
+              <p><input class="td txtstylo" value="{{profile.db_address_Country}}" style="max-width: 250px;min-width: 250px; ; color: rgba(0,0,0,0.6) ; outline: none; border: none none;  border-color: transparent transparent;" readonly></p> 
+            </a>
+              {% endif %}
+              {% endfor %}
+              {% endif %}
+            </div>
+          </label>
+          
+          <div id="mid">
+            <div class="info">
+              <table style="border-top:1px dotted #000 ;">
+                    <tr>
+                        <td>Order Id:</td>
+                        <td> <input class="td txtstylo" value="{{order.Pk_order_ID}}" style="color: rgba(0,0,0,0.6) ; outline: none; border: none none;  border-color: transparent transparent;" readonly></td>
+                    </tr>
+                   
+                    {% if user.is_staff and  ordered.order_email == user.email %}
+                    {% for about in obj_about %} 
+                    <tr>
+                      <td><input class="td txtstylo" value="Customer Name:"  style="max-width: 88px; font-size: 1.1rem; color: rgba(0,0,0,0.6) ; outline: none; border: none none;  border-color: transparent transparent;"  readonly></td>
+                      <td>  
+                          <input class="td txtstylo" value="Admin Staff"  style="max-width: 175px; color: rgba(0,0,0,0.6) ; outline: none; border: none none;  border-color: transparent transparent;"  readonly>
+                      </td> 
+                      </tr>
+                  <tr>
+                      <td>Phone Number:</td>
+                      <td>
+                          <a href="tel:{{about.about_contact}}:"> <input class="td txtstylo" value="{{about.about_contact}}"  style="max-width: 175px;color: rgba(0,0,0,0.6) ; outline: none; border: none none;  border-color: transparent transparent; "  readonly></td>
+                       
+                      </tr>
+                      {% endfor %}
+                    {% else %}
+                    <tr>
+                      <td><input class="td txtstylo" value="Customer Name:"  style="max-width: 88px; font-size: 1.1rem; color: rgba(0,0,0,0.6) ; outline: none; border: none none;  border-color: transparent transparent;"  readonly></td>
+                      <td> {% for usr in obj_User  %}
+                          {% if ordered.order_email == usr.email %}
+                          <input class="td txtstylo" value="{{usr.first_name}} {{usr.last_name}}"  style="max-width: 175px; color: rgba(0,0,0,0.6) ; outline: none; border: none none;  border-color: transparent transparent;"  readonly>
+                      </td>
+                          {% endif %}
+                          {% endfor %}
+                      </tr>
+                  <tr>
+                      <td>Phone Number:</td>
+                      <td>{% for profile in obj_profile  %}
+                          {% if ordered.order_email == profile.char_email %}
+                          <a href="tel{{profile.db_phoneNumber}}:"> <input class="td txtstylo" value="{{profile.db_phoneNumber}}"  style="max-width: 175px;color: rgba(0,0,0,0.6) ; outline: none; border: none none;  border-color: transparent transparent; "  readonly></td>
+                          {% endif %}
+                          {% endfor %}
+                      </tr>
+                    {% endif %}
+                    <tr>
+                        <td>Email :</td>
+                        <td><a href="mailto:{{ordered.order_email}}"> <input class="td txtstylo" value="{{ordered.order_email}}"  style="max-width: 175px; color: rgba(0,0,0,0.6) ; outline: none; border: none none;  border-color: transparent transparent;"  readonly></a></td>
+                    </tr>
+                    
+                    <tr>
+                      <td>Cash On :</td>
+                      <td>Cash on Delivery</td>
+                  </tr> 
+                  <tr>
+                    <td>Status :</td>
+                    <td>{{order.status_Cart}}</td>
+                </tr> 
+                <tr>
+                    <td>Date :</td>
+                    <td>{{order.created_at}}</td>
+                </tr>
+      </table>
+      
+            </div>
+          </div><!--End Invoice Mid-->
+        
+          <div id="bot">
+             
+                <div id="table">
+                  <table  style="border-top:1px dotted #000 ;">
+                    <thead>
+                    <th>Product Items</th>
+                      <th>Quantity</th>
+                      <th>Rate</th>
+                      <th>Total</h>
+                      </thead>  
+                      
+                       {% for ordMed in obj_OrderMedicine %}
+                       {% if ordMed.order_OrderMedicine_ID == order.Pk_order_ID  %}  
+                                  <tbody>
+                                    <tr class="service">
+                                      <td><input class="td txtstylo" value="{{ordMed.med_OrderMedicine_ID|GetName}}" style="max-width: 100px; color: rgba(0,0,0,0.6) ; outline: none; border: none none;  border-color: transparent transparent;" readonly></td>
+                                      <td> <div class="widget-26-job-info"> 
+                                        {{ordMed.Pk_Cart_List_ID|GetQuantity}}                                                      
+                                      </div></td>
+                                      <td>{{ordMed.med_OrderMedicine_ID|GetPrice}}</td> 
+                                      <td> {{ordMed.Pk_Cart_List_ID|GetTotalPrice}} </td> 
+                                    </tr>
+                                </tbody> 
+                               
+                      {% endif %}
+                      
+                      {% endfor %}
+                  </table>
+                      <table  style="border-top:1px dotted #000 ;">
+                          <tr  class="total-section">
+                              <td>Subtotal :</td>
+                              <td><input class="td section_txtstylo" value="{{order.Med_Price}}" style=" color: rgba(0,0,0,0.6) ; outline: none;  border: none none; border-color: transparent transparent; max-width: 200px; justify-content: end;  text-align: end;"  readonly></td>
+                          </tr>
+                          <tr class="total-section">
+                              <td>Gst</td>
+                              <td><input class="td section_txtstylo" value="Rs.0" style=" color: rgba(0,0,0,0.6) ; outline: none;  border: none none; border-color: transparent transparent; max-width: 200px; justify-content: end;  text-align: end;"  readonly></td>
+                          </tr>
+                          <tr class="total-section">
+                              <td>Discount:</td>
+                              <td><input class="td section_txtstylo" value="Rs.0"  style=" color: rgba(0,0,0,0.6) ; outline: none;  border: none none; border-color: transparent transparent; max-width: 200px; justify-content: end;  text-align: end;"   readonly></td>
+                          </tr>
+                          
+                      </table>
+                  <table  style="border-top:1px dotted #000 ;">
+                      <tr class="total-section">
+                          <td>Grand Total:</td>
+                        <td><input class="td section_txtstylo" value="Rs.{{order.Med_Price}}"  style=" color: rgba(0,0,0,0.6) ; outline: none;  border: none none; border-color: transparent transparent; max-width: 200px; justify-content: end;  text-align: end;"  readonly></td>
+                      </tr>
+                      
+                  </table>
+            </div>
+              
+              <div class="legalcopy"  style="border-top:1px dotted #000 ; padding-top: 1rem; width: fit-content;">
+                  <div class="fassainumber">
+                    <p ><!--
+                      <img src="{% static 'StorePharma/logo.png' %}"  alt="Pin Logo" style="position: relative; bottom: 0.7dvh;  right: 0.2dvh;" width="55" height="30">
+                         --><span style="color: rgb(5, 119, 233);  font: bold;"> Pharma &nbsp;</span><span style="color: rgb(204, 34, 159);  font: bold;">  Pill &nbsp;</span> Lic No.12345678912345 </p>
+                  </div> 
+                  <p style="padding: 0 0 0 0; text-shadow: 1px dotted #000;">Thanks & Visit again</p>
+                </div>
+                <div class="legalcopy">
+                  <div class="fassainumber">
+                    <p >Powered by&nbsp;<span style="color: rgb(5, 119, 233);  font: bold;">Pharma&nbsp;</span><span style="color: rgb(204, 34, 159);  font: bold;">  Pill </span> </p>
+                  </div>
+                </div> 
+                 
+          </div>  
+              <a id="printButton{{order.Pk_order_ID}}" class="btn">Print Invoice</a>
+            </div>  
+            <!--       </center> center  -->
+        
+        </div>
+       
+      
+      
+      <script>
+        function printDiv() { 
+          var invoiceElement = document.getElementById("POS{{order.Pk_order_ID}}");
+      
+          if (invoiceElement) {
+              var printWindow = window.open('', '', 'width=900,height=900');
+              printWindow.document.open();
+              printWindow.document.write('<html><head><title>Pharma Pill {{order.Pk_order_ID}}</title></head><body>');
+              printWindow.document.write(invoiceElement.innerHTML);
+              printWindow.document.write('</body>-----------------------------------------------------</html>');
+              printWindow.document.close();
+              printWindow.print("Medicine");
+              printWindow.close();
+          } else {
+              alert("Div with ID 'POS{{order.Pk_order_ID}}' not found.");
+          }
+      }
+      
+      // Add a click event listener to the button
+      document.getElementById("printButton{{order.Pk_order_ID}}").addEventListener("click", printDiv);
+      </script>
+      </div>
+      <div class="col-4"> 
+        {% endif %}
+      {% endfor %}
+      </div>
+          </div>
+        
+    </div>
+    
+    
+      <script src="{% static 'StorePharma/js/receiptProfile.js' %}"></script>
+    </body> 
+    </html>
